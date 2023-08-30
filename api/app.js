@@ -2,13 +2,13 @@ import express from "express";
 import path from "path"
 import { config } from "dotenv";
 config();
-// import { errorHandling } from "./middleware/errorHandling.js"
+import { errorHandling } from "./middleware/errorHandling.js"
 // import cors
 import cors from "cors";
  
 import bodyParser from "body-parser";
 
-// import routes
+// import routes 
 import Router from "../api/routes/route.js";
 
 import cookieParser from "cookie-parser";
@@ -39,7 +39,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
   
 // use router
 app.use(Router);
-// app.use(errorHandling);
+app.use(errorHandling);
 
 app.get('/', (req, res)=>{
     res.status(200);
