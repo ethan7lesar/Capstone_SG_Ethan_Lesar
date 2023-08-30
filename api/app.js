@@ -43,6 +43,6 @@ app.use(Router);
 
 app.get('/', (req, res)=>{
     res.status(200);
-    res.sendFile(path.resolve("./static/html/index.html"));
+    // res.sendFile(path.resolve("./static/html/index.html"));
 });
 app.listen(5000, () => console.log('Server running at http://localhost:5000'));
