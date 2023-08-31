@@ -4,6 +4,7 @@ import express from "express";
 import { showProducts, showProductById, createProduct, updateProduct, deleteProduct } from "../controllers/Products.js";
 import { showUsers, showUserById, createUser, updateUser, deleteUser } from "../controllers/User.js";
 import { userLogin } from "../models/usersModel.js";
+import { createCart, deleteAllCartItems, deleteCart, showCart, updateCart } from "../controllers/Cart.js";
 const router = express.Router();
   
 // Get All Product
@@ -37,5 +38,16 @@ router.put('/users/:id', updateUser);
 router.delete('/users/:id', deleteUser);
 
 router.post('/login', userLogin);
+
+router.get('/users/:id/cart', showCart);
+
+router.post('/users/:id/cart', createCart);
+
+router.delete('/users/:id/cart', deleteAllCartItems);
+
+router.delete('/users/:id/cart/:id', deleteCart);
+
+router.put('/users/:id/cart/:id', updateCart);
+
 
 export default router;

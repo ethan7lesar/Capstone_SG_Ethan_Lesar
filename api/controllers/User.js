@@ -41,7 +41,7 @@ import {
     let token = createToken(user);
     insertUser(data, (err, results) => {
       if (err) throw err;
-      res.cookie("authorizedUser", token, { maxAge: 360000, httpOnly: true });
+      res.cookie("legitUser", token, { maxAge: 360000, httpOnly: true });
       res.json({ results, token });
     });
   };
