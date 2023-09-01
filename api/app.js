@@ -32,7 +32,7 @@ app.use(cors());
 
 
 
-// app.use(express.static("./static"));
+ app.use(express.static("./static"));
  
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -43,6 +43,6 @@ app.use(errorHandling);
 
 app.get('/', (req, res)=>{
     res.status(200);
-    // res.sendFile(path.resolve("./static/html/index.html"));
+     res.sendFile(path.resolve("./static/html/index.html"));
 });
 app.listen(5000, () => console.log('Server running at http://localhost:5000'));

@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+  body{
+    background-color: black;
+  }      
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 100%;
+  color: #EBE2EA;
+}
+td, th {
+  border: 1px solid green;
+  text-align: left;
+  padding: 8px;
+}
+tr:nth-child(even) {
+  background-color: #EBE2EA;
+  color: black;
+}
+h2 {
+    color: rgb(0, 134, 31);
+}
+</style>
+</head>
+<body>
+    <h2>Home</h2>
+    <table>
+      <tr>
+        <th>HTTP Methods</th>
+        <th>Path</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>GET</td>
+        <td>/(Home page)</td>
+        <td>Takes you to the home page</td>
+      </tr>
+    </table>
+    <h2>Users Table</h2>
+    <table>
+      <tr>
+        <th>HTTP Methods</th>
+        <th>Path</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>GET</td>
+        <td>/users</td>
+        <td>displays a list of users</td>
+      </tr>
+      <tr>
+        <td>GET</td>
+        <td>/users/:id</td>
+        <td>displays a specific user based on id</td>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td>/register</td>
+        <td>Creates a new user/register a new user</td>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td>/logins</td>
+        <td>Checks if user information is correct the allows you to log in</td>
+      </tr>
+      <tr>
+        <td>PUT</td>
+        <td>/users/:id</td>
+        <td>Updates an existing user</td>
+      </tr>
+      <tr>
+        <td>DELETE</td>
+        <td>/users/:id</td>
+        <td>Deletes a user</td>
+      </tr>
+    </table>
+    <h2>Products Table</h2>
+    <table>
+      <tr>
+        <th>HTTP Methods</th>
+        <th>Path</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>GET</td>
+        <td>/products</td>
+        <td>Displays a list of products</td>
+      </tr>
+      <tr>
+        <td>GET </td>
+        <td>/products/:id</td>
+        <td>Displays a single user by id</td>
+      </tr>
+      <tr>
+        <td>POST</td>
+        <td>/products</td>
+        <td>Adds a new product</td>
+      </tr>
+      <tr>
+        <td>PUT/PATCH</td>
+        <td>/products/:id</td>
+        <td>Updates a products details</td>
+      </tr>
+      <tr>
+        <td>DELETE </td>
+        <td>/products/:id</td>
+        <td>deletes a product from the database</td>
+      </tr>
+    </table>
+    <h2>Cart Table</h2>
+    <table>
+      <tr>
+        <th>HTTP Methods</th>
+        <th>Path</th>
+        <th>Description</th>
+      </tr>
+      <tr>
+        <td>GET</td>
+        <td>/user/:id/cart</td>
+        <td>Display The Cart</td>
+      </tr>
+      <tr>
+        <td>POST </td>
+        <td>/user/:id/cart</td>
+        <td>Add the user and the users item to cart</td>
+      </tr>
+      <tr>
+        <td>PUT</td>
+        <td>/user/:id/cart/:id</td>
+        <td>Can update the cart and user and products</td>
+      </tr>
+      <tr>
+        <td>DELETE</td>
+        <td>/user/:id/cart/:id</td>
+        <td>Delete all the users items</td>
+      </tr>
+      <tr>
+        <td>DELETE </td>
+        <td>/user/:id/cart</td>
+        <td>delete a single users item</td>
+      </tr>
+    </table>
+</body>
+</html>
+
+
