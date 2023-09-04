@@ -1,5 +1,5 @@
 <template>
-  <nav class=" flex bg-transparent sticky top-0 p-[20px] bg-opacity-100">
+  <nav class=" flex bg-background sticky top-0 p-[20px]  bg-opacity-80">
     <div class="logo"><svg xmlns="http://www.w3.org/2000/svg" width="170" height="41" viewBox="0 0 170 41" fill="none">
         <g clip-path="url(#clip0_14_179)">
           <path d="M51.2773 29.3231H63.2293V25.7231H55.5253V12.1631H51.2773V29.3231Z" fill="white"/>
@@ -25,7 +25,7 @@
         <router-link to="/">Home</router-link>
       </li>
       <li>
-        <router-link to="/">Collectables</router-link>
+        <router-link to="/products">Collectables</router-link>
       </li>
       <li>
         <router-link to="/">My Collection</router-link>

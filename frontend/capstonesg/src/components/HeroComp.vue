@@ -2,7 +2,7 @@
   <header class="flex mt-20">
     <div class="flex-1 ms-24">
       <h1 class=" text-secondary text-[78px]">Discover The World of digital art.</h1>
-      <div class="buttons flex gap-36 mt-10">
+      <div class="buttons flex gap-20 mt-10">
         <router-link class=" border-[1px] border-main p-5 rounded-[15px] bg-detail text-contrast " to="/">Discover Art</router-link>
         <router-link to="/about" class="border-[1px] border-detail p-5 rounded-[15px] text-detail">How we work</router-link>
       </div>
