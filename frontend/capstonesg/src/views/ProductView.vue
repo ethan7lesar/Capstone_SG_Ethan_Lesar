@@ -1,15 +1,16 @@
 <template>
-  <div class="main my-32 px-28">
+  <div class="main mb-28 mt-10 px-28">
     <div v-if="product" class="flex">
-      <div class="ms-20 mt-20">
+      <div class="ms-20 mt-20 relative w-[50%]">
         <img
           :src="product.prodUrl"
           :alt="product.prodName"
-          class="rounded-[30px]"
+          class="rounded-[30px] absolute top-[-10%] z-10 right-[31%] border-main border-[2px]"
+          id="image"
         />
-        <div class="podium"></div>
+        <img src="https://i.postimg.cc/L5YzqcFv/Ellipse-6.png " alt="podium" class="absolute bottom-0">
       </div>
-      <div class="ms-80 flex flex-col gap-1">
+      <div class=" flex flex-col gap-1">
         <h1 class="text-[60px] text-detail">{{ product.prodName }}</h1>
         <div class="flex gap-3">
           <h6 class="text-center text-[50px] text-secondary">
@@ -26,11 +27,19 @@
           nihil quaerat deleniti animi nisi ad sed aperiam reprehenderit at
           quas! Consectetur, ducimus architecto.
         </p>
-        <h6 class=" text-[22px] text-secondary"> R{{ product.price }}</h6>
+        <h6 class="text-[22px] text-secondary">R{{ product.price }}</h6>
 
         <div class="flex gap-20 mx-3 mt-5">
-          <router-link to="/products" class="border-[1px] border-detail px-7 py-2 text-detail rounded-[20px]">Back</router-link>
-          <button class=" border-main rounded-[20px] bg-detail border-[1px] px-7 py-2">Add to cart</button>
+          <router-link
+            to="/products"
+            class="border-[1px] border-detail px-7 py-2 text-detail rounded-[20px]"
+            >Back</router-link
+          >
+          <button
+            class="border-main rounded-[20px] bg-detail border-[1px] px-7 py-2"
+          >
+            Add to cart
+          </button>
         </div>
       </div>
     </div>
@@ -40,16 +49,24 @@
 
 <script>
 export default {
-  props: ["id"],
   computed: {
     product() {
       return this.$store.state.product;
     },
+    id() {
+      return this.$route.params.id;
+    },
   },
+
   mounted() {
-    this.$store.dispatch("fetchProduct", this.id),
-      this.$store.dispatch("fetchProducts");
+    this.$store.dispatch("getProduct", this.id);
   },
+  // methods: {
+  //     addToCart (product) {
+  //         this.$store.dispatch('addToCart', product)
+  //     }
+
+  // },
 };
 </script>
 
@@ -69,10 +86,8 @@ export default {
   line-height: normal;
 }
 
-.podium {
-  border-radius: 556px;
-  border: 1px solid #323232;
-  background: rgba(217, 217, 217, 0);
-  box-shadow: 0px 4px 4px 4px #f6ea00;
+#image{
+  box-shadow: 0px 10px 4px 0px rgba(0, 0, 0, 0.25);
 }
+
 </style>

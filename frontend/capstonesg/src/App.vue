@@ -8,10 +8,18 @@
 import NavBarComp from './components/NavBarComp.vue';
 import FooterComp from './components/FooterComp.vue';
 export default {
-components: {NavBarComp, FooterComp}
+components: {NavBarComp, FooterComp},
+mounted() {
+    this.$store.dispatch("getProducts");
+},
 
+created() {
+    const userData = localStorage.getItem("userData");
+    if (userData) {
+      this.$store.commit("setUserData", JSON.parse(userData));
+    }
+  },
 }
-
 </script>
 
 <style>

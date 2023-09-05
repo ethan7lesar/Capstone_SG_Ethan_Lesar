@@ -19,7 +19,6 @@
           </clipPath>
         </defs>
       </svg></div>
-    <div class="searchBar ms-auto "><input type="search" name="" id="" placeholder="Search Collectables" class="rounded-[20px] w-[289px] h-[45px] flex-shrink-0 bg-contrast  border-datail ps-[10%] border-detail text-detail border-[2px]"></div>
     <ul class=" flex gap-10 ms-auto my-auto text-secondary">
       <li>
         <router-link to="/">Home</router-link>

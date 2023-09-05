@@ -1,5 +1,5 @@
 <template>
-    <main
+    <form @submit.prevent="userLogin"
       class="items-center justify-center text-center w-fit rounded-[30px] border-main border-[2px] p-10 bg-contrast my-6 mx-auto flex flex-col gap-5 mb-36"
     >
       <div class="heading mx-auto">
@@ -65,11 +65,11 @@
       <div class="imputs flex flex-col gap-7 ">
         <div class="flex justify-between gap-5 text-center">
           <label for="" class=" my-auto">Email:</label>
-          <input type="email" name="" id="" />
+          <input type="email" name="" id="" v-model="emailAdd" />
         </div>
         <div class="flex justify-between gap-5 text-center">
           <label class=" my-auto">Password:</label>
-          <input type="password" name="" id="" />
+          <input type="password" name="" id="" v-model="userPass" />
         </div>
       </div>
       <div class="btnandlink flex flex-col gap-3 mt-4">
@@ -77,11 +77,49 @@
         <p>Need an account ?</p>
         <router-link to="/register" class="text-detail text-[25px]">Register</router-link>
       </div>
-    </main>
+    </form>
   </template>
   
   <script>
-  export default {};
+  import Swal from "sweetalert2";
+  export default { data() {
+    return {
+      emailAdd: "",
+      userPass: "",
+    };
+  },
+  beforeCreate() {
+    this.$store.dispatch("cookieCheck");
+  },
+  methods: {
+    async userLogin() {
+      console.log("Reached");
+      try {
+        const payload = {
+          emailAdd: this.emailAdd,
+          userPass: this.userPass,
+        };
+        const resp = await this.$store.dispatch("login", payload);
+        if (resp.success && resp.token) {
+          await Swal.fire({
+            icon: "success",
+            title: "Logged in Successfully",
+            text: "You are now logged in!",
+          });
+          this.$router.push("/");
+        } else {
+          const errMsg = resp.error || "Unexpected error";
+          await Swal.fire({
+            icon: "error",
+            title: "Login failed",
+            text: errMsg,
+          });
+        }
+      } catch (e) {
+        console.error("Error while logging in: ", e);
+      }
+    },
+  },};
   </script>
   
   <style scoped>
