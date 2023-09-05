@@ -72,10 +72,10 @@ export const userLogin = (req, res) => {
         });
 
         // save token
-        res.cookie("LegitUser", token, {
-          maxAge: 3600000,
-          httpOnly: true,
-        });
+        // res.cookie("LegitUser", token, {
+        //   maxAge: 3600000,
+        //   httpOnly: true,
+        // });
 
         if (cResult) {
           res.json({
