@@ -271,21 +271,6 @@ export default createStore({
       Cookies.remove("userToken");
     },
 
-    cookieCheck(context) {
-      const token = Cookies.get("userToken");
-      if (token) {
-        context.commit("setToken", token);
-      }
-    },
-    init(context) {
-      context.dispatch("cookieCheck");
-    },
-    async logout(context) {
-      context.commit("setToken", null);
-      context.commit("setUser", null);
-      context.commit("setUserData", null);
-      Cookies.remove("userToken");
-    },
 
   },
   modules: {},

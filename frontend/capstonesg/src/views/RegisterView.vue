@@ -97,12 +97,8 @@ export default {
     return {
       firstName: "",
       lastName: "",
-      userAge: "",
-      gender: "",
-      userRole: "",
       emailAdd: "",
       userPass: "",
-      userProfile: "",
     };
   },
   methods: {
@@ -111,12 +107,8 @@ export default {
         const resp = await this.$store.dispatch("register", {
           firstName: this.firstName,
           lastName: this.lastName,
-          userAge: this.userAge,
-          gender: this.gender,
-          userRole: this.userRole,
           emailAdd: this.emailAdd,
           userPass: this.userPass,
-          userProfile: this.userProfile,
         });
         if (resp.success) {
           await Swal.fire({
