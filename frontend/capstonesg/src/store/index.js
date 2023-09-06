@@ -201,7 +201,7 @@ export default createStore({
     async register(context, payload) {
       console.log("Reached");
       try {
-        const res = await axios.post(`${URL}register`, payload);
+        const res = await axios.post(`${URL}/register`, payload);
         console.log("Res: ", res.data);
         const { msg, err, token } = res.data;
         if (msg === "An error occured") {
@@ -225,25 +225,25 @@ export default createStore({
 
     async login(context, payload) {
       try {
-        const res = await axios.post(`${URL}/login`, payload);
-        const { msg, err, token, userData } = res.data;
-        if (msg === "You are providing the wrong email or password") {
-          console.log(msg);
-          context.commit("setError", msg);
+        const res = await axios.post(`https://sg-backend-9zyd.onrender.com/login`, payload);
+        console.log("Res: ", res.data.status);
+        const { err, message, token, result } = res.data;
+        console.log(result);
+        if (message === "Unregistered user or incorrect password!") {
+          context.commit("setError", message);
           context.commit("setLogStatus", "Not logged in");
-          return { success: false, error: msg };
+          return { success: false, error: message };
         }
-        if (token) {
-          context.commit("setUser", userData);
+        if (message && token && result) {
+          context.commit("setUser", result);
           context.commit("setToken", token);
-
-          context.commit("setLogStatus", res.data.message);
+          context.commit("setUserData", result);
+          context.commit("setLogStatus", "Logged in!");
           Cookies.set("userToken", token, {
             expires: 1,
           });
-          return { success: res.data.success, token };
+          return { success: true, token, result };
         } else if (err) {
-          context.commit("setToken", null);
           context.commit("setError", err);
           return { success: false, error: err };
         } else {
@@ -252,23 +252,23 @@ export default createStore({
           return { success: false, error: "Unknown error" };
         }
       } catch (err) {
-        if (err.resp) {
-          console.error(
-            "Server gave an error: ",
-            err.resp.status,
-            err.resp.data
-          );
-        } else if (err.req) {
-          console.error(
-            "No response from the server. Check your internet connection"
-          );
-        } else {
-          console.log("An error occured: ", err);
-        }
-        context.commit("setError", "An error occured while trying to log in");
-        context.commit("setLogStatus", "Not logged in");
-        return { success: false, error: "Network error" };
+        console.log("Error")
       }
+    },
+    cookieCheck(context) {
+      const token = Cookies.get("userToken");
+      if (token) {
+        context.commit("setToken", token);
+      }
+    },
+    init(context) {
+      context.dispatch("cookieCheck");
+    },
+    async logout(context) {
+      context.commit("setToken", null);
+      context.commit("setUser", null);
+      context.commit("setUserData", null);
+      Cookies.remove("userToken");
     },
 
     cookieCheck(context) {

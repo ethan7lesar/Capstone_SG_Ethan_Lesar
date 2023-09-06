@@ -65,11 +65,11 @@
       <div class="imputs flex flex-col gap-7 ">
         <div class="flex justify-between gap-5 text-center">
           <label for="" class=" my-auto">Email:</label>
-          <input type="email" name="" id="" v-model="emailAdd" />
+          <input type="email" name="emailAdd" id="emailAdd" v-model="emailAdd" />
         </div>
         <div class="flex justify-between gap-5 text-center">
           <label class=" my-auto">Password:</label>
-          <input type="password" name="" id="" v-model="userPass" />
+          <input type="password" name="userPass" id="userPass" v-model="userPass" />
         </div>
       </div>
       <div class="btnandlink flex flex-col gap-3 mt-4">
@@ -82,7 +82,8 @@
   
   <script>
   import Swal from "sweetalert2";
-  export default { data() {
+  export default {
+  data() {
     return {
       emailAdd: "",
       userPass: "",
@@ -99,9 +100,9 @@
           emailAdd: this.emailAdd,
           userPass: this.userPass,
         };
-        console.log(payload)
         const resp = await this.$store.dispatch("login", payload);
-        if (resp.success && resp.token) {
+        console.log(resp)
+        if (resp.success === true && resp.token && resp.result) {
           await Swal.fire({
             icon: "success",
             title: "Logged in Successfully",
@@ -109,7 +110,7 @@
           });
           this.$router.push("/");
         } else {
-          const errMsg = resp.error || "Unexpected error";
+          const errMsg = "Unexpected error";
           await Swal.fire({
             icon: "error",
             title: "Login failed",
@@ -120,7 +121,8 @@
         console.error("Error while logging in: ", e);
       }
     },
-  },};
+  },
+};
   </script>
   
   <style scoped>

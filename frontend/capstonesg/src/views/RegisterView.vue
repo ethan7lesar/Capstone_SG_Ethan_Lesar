@@ -1,6 +1,7 @@
 <template>
-  <main
+  <form
     class="items-center justify-center text-center w-fit rounded-[30px] border-main border-[2px] p-10 bg-contrast my-6 mx-auto flex flex-col gap-5 mb-10"
+    @submit.prevent="register"
   >
     <div class="heading mx-auto">
       <svg
@@ -65,19 +66,19 @@
     <div class="imputs flex flex-col gap-7 ">
       <div class="flex justify-between gap-5 text-center">
         <label for="" class=" my-auto">First Name:</label>
-        <input type="text" />
+        <input type="text" name="firstName" id="firstName" v-model="firstName" />
       </div>
       <div class="flex justify-between gap-5 text-center">
         <label for="" class=" my-auto">Last Name:</label>
-        <input type="text" />
+        <input type="text" name="lastName" id="lastName" v-model="lastName"/>
       </div>
       <div class="flex justify-between gap-5 text-center">
         <label for="" class=" my-auto">Email:</label>
-        <input type="email" name="" id="" />
+        <input type="email" name="emailAdd" id="emailAdd" v-model="emailAdd" />
       </div>
       <div class="flex justify-between gap-5 text-center">
         <label class=" my-auto">Password:</label>
-        <input type="password" name="" id="" />
+        <input type="password" name="userPass" id="userPass" v-model="userPass" />
       </div>
     </div>
     <div class="btnandlink flex flex-col gap-1 mt-1">
@@ -85,11 +86,58 @@
       <p>Already have an account ?</p>
       <router-link to="/login" class="text-detail text-[25px]">Login</router-link>
     </div>
-  </main>
+  </form>
 </template>
 
 <script>
-export default {};
+import Swal from "sweetalert2";
+
+export default {
+  data() {
+    return {
+      firstName: "",
+      lastName: "",
+      userAge: "",
+      gender: "",
+      userRole: "",
+      emailAdd: "",
+      userPass: "",
+      userProfile: "",
+    };
+  },
+  methods: {
+    async register() {
+      try {
+        const resp = await this.$store.dispatch("register", {
+          firstName: this.firstName,
+          lastName: this.lastName,
+          userAge: this.userAge,
+          gender: this.gender,
+          userRole: this.userRole,
+          emailAdd: this.emailAdd,
+          userPass: this.userPass,
+          userProfile: this.userProfile,
+        });
+        if (resp.success) {
+          await Swal.fire({
+            icon: "success",
+            title: "Registration successful",
+            text: "You are now registered, please log in",
+          });
+        } else {
+          await Swal.fire({
+            icon: "error",
+            title: "Registration failed",
+            text: resp.error || "Unexpected error",
+          });
+        }
+        this.$router.push("/login");
+      } catch (e) {
+        console.error("Registration error: ", e);
+      }
+    },
+  },
+};
 </script>
 
 <style scoped>
