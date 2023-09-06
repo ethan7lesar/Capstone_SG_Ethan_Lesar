@@ -1,6 +1,6 @@
 import { createStore } from "vuex";
 import axios from "axios";
-const URL = "https://sg-backend-9zyd.onrender.com/"
+const URL = "https://sg-backend-9zyd.onrender.com"
 import Cookies from "js-cookie"
 
 export default createStore({
@@ -65,6 +65,7 @@ export default createStore({
         state.products[index] = updatedProduct;
       }
     },
+
     setRegStatus(state, status) {
       state.regStatus = status;
     },
@@ -224,7 +225,7 @@ export default createStore({
 
     async login(context, payload) {
       try {
-        const res = await axios.post(`${URL}login`, payload);
+        const res = await axios.post(`${URL}/login`, payload);
         const { msg, err, token, userData } = res.data;
         if (msg === "You are providing the wrong email or password") {
           console.log(msg);

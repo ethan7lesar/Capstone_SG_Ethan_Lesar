@@ -99,6 +99,7 @@
           emailAdd: this.emailAdd,
           userPass: this.userPass,
         };
+        console.log(payload)
         const resp = await this.$store.dispatch("login", payload);
         if (resp.success && resp.token) {
           await Swal.fire({
