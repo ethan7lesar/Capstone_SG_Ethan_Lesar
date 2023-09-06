@@ -16,6 +16,7 @@ export default createStore({
     error: null,
     regStatus: null,
     logStatus: null,
+    cart: null,
   },
   getters: {
     // cartProducts (state, getters) {
@@ -35,16 +36,14 @@ export default createStore({
     setUser: (state, user) => {
       state.user = user;
     },
-    setcartItems: (state, cartItems) => {
-      state.cart = cartItems;
+    setCart(state, value) {
+      state.cart = value
     },
     addProduct(state, product) {
       state.products.push(product); // Add the new product to the list.
     },
     // Mutations to modify the cart state
-    addToCart(state, product) {
-      state.cartItems.push({ product, quantity: 1 });
-    },
+
     deleteProduct(state, productId) {
       // Remove the product with the given ID from the products list.
       state.products = state.products.filter(
@@ -166,18 +165,23 @@ export default createStore({
         return false; // Indicate failure.
       }
     },
+        /** Cart **/
+        async getCart(context, id) {
+          const res = await axios.get(`${URL}/users/${id}/cart`);
+          context.commit('setCart', res.data)
+          console.log(id);
+        },
 
-    addToCart({ commit, state }, product) {
-      const cartItem = state.cartItems.find(
-        (item) => item.product.id === product.id
-      );
-      if (cartItem) {
-        commit("incrementItemQuantity", cartItem);
-      } else {
-        commit("addToCart", product);
-      }
-    },
-
+        async addCart(context, {payload}) {
+          console.log(payload);
+          let userID = localStorage.getItem('userID')
+          const {res,} = await axios.post(`${URL}users/${userID}/cart`, payload);
+          if (res) {
+            context.commit('getCart', res.data)        
+          } else {
+            // context.commit('setMessage', message)
+          }
+        },
     clearCart({ commit }) {
       commit("clearCart");
     },

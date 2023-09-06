@@ -37,6 +37,7 @@
           >
           <button
             class="border-main rounded-[20px] bg-detail border-[1px] px-7 py-2"
+            @click="addCart(product)"
           >
             Add to cart
           </button>
@@ -61,6 +62,22 @@ export default {
   mounted() {
     this.$store.dispatch("getProduct", this.id);
   },
+  // mounted() {
+  //   this.$store.dispatch("getProduct", this.$route.params.id);
+  // },
+  methods: {
+    async addCart(product) {
+      const userID = localStorage.getItem('user', );
+      console.log(userID, product.productID);
+      this.$store.dispatch('addCart', {
+        userID: userID,
+        payload: {
+          userID: userID,
+          productID: product.productID
+        }
+      })
+    }
+  }
   // methods: {
   //     addToCart (product) {
   //         this.$store.dispatch('addToCart', product)
