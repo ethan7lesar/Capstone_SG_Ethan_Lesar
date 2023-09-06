@@ -12,7 +12,7 @@ export default createStore({
     token: null,
     userData: null,
     userRole: null,
-    msg: null,
+    message: null,
     error: null,
     regStatus: null,
     logStatus: null,
@@ -203,11 +203,11 @@ export default createStore({
       try {
         const res = await axios.post(`${URL}/register`, payload);
         console.log("Res: ", res.data);
-        const { msg, err, token } = res.data;
-        if (msg === "An error occured") {
-          context.commit("setError", msg);
+        const { message, err, token } = res.data;
+        if (message === "An error occured") {
+          context.commit("setError", message);
           context.commit("setRegStatus", "Not registered");
-          return { success: false, error: msg };
+          return { success: false, error: message };
         } else if (token) {
           context.commit("setToken", token);
           context.commit("setRegStatus", "Registered successfully");
