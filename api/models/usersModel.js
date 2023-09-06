@@ -51,7 +51,7 @@ export const insertUser = (data, result) => {
 export const userLogin = (req, res) => {
   const { emailAdd, userPass } = req.body;
 
-  const query = `SELECT firstName, lastName, userRole, emailAdd, userPass FROM Users WHERE emailAdd = '${emailAdd}'`;
+  const query = `SELECT userID, firstName, lastName, userRole, emailAdd, userPass FROM Users WHERE emailAdd = '${emailAdd}'`;
 
   db.query(query, async (err, result) => {
     if (err) throw err;
