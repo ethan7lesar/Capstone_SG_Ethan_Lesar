@@ -55,6 +55,10 @@ export default createStore({
     clearCart(state) {
       state.cartItems = [];
     },
+
+    addProductToCart(state, product) {
+      state.cart.push(product);
+    },
     updateProduct(state, updatedProduct) {
       // Find the product in the state by its ID and update it
       const index = state.products.findIndex(
@@ -172,19 +176,30 @@ export default createStore({
           console.log(id);
         },
 
-        async addCart(context, {payload}) {
-          console.log(payload);
-          let userID = localStorage.getItem('userID')
-          const {res,} = await axios.post(`${URL}users/${userID}/cart`, payload);
-          if (res) {
-            context.commit('getCart', res.data)        
-          } else {
-            // context.commit('setMessage', message)
-          }
-        },
-    clearCart({ commit }) {
-      commit("clearCart");
-    },
+//add to cart
+
+async addToCart({ commit }, { userID, productID }) {
+  try {
+    // Send a POST request to your server's API endpoint
+    const response = await axios.post(`https://sg-backend-9zyd.onrender.com/users/${userID}/cart`, {
+      userID,
+      productID,
+    });
+
+    // Handle the response as needed
+    if (response.status === 200) {
+      // The item was added to the cart successfully
+      // You can commit a mutation to update the cart in your store if needed
+      commit('addProductToCart', response.data); // Assuming the response contains the added product
+    } else {
+      // Handle other response statuses or errors
+      // You can also use try-catch blocks to handle errors more precisely
+    }
+  } catch (error) {
+    console.error(error);
+    // Handle network errors or other exceptions
+  }
+},
 
     async updateProduct({ commit }, updatedProductData) {
       try {

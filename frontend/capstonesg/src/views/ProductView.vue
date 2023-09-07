@@ -37,7 +37,7 @@
           >
           <button
             class="border-main rounded-[20px] bg-detail border-[1px] px-7 py-2"
-            @click="addCart(product)"
+            @click="addToCart(product.productID)"
           >
             Add to cart
           </button>
@@ -57,6 +57,9 @@ export default {
     id() {
       return this.$route.params.id;
     },
+    userData() {
+      return this.$store.state.userData;
+    },
   },
 
   mounted() {
@@ -66,24 +69,19 @@ export default {
   //   this.$store.dispatch("getProduct", this.$route.params.id);
   // },
   methods: {
-    async addCart(product) {
-      const userID = localStorage.getItem('user', );
-      console.log(userID, product.productID);
-      this.$store.dispatch('addCart', {
-        userID: userID,
-        payload: {
-          userID: userID,
-          productID: product.productID
-        }
-      })
-    }
-  }
-  // methods: {
-  //     addToCart (product) {
-  //         this.$store.dispatch('addToCart', product)
-  //     }
-
-  // },
+        addToCart(productID) {
+      // Ensure the user is logged in
+      if (this.userData && this.userData.userID) {
+        // Call the addToCart action with userID and prodID
+        this.$store.dispatch('addToCart', {
+          userID: this.userData.userID,
+          productID,
+        });
+      } else {
+        // Handle the case where the user is not logged in, prompt for login, etc.
+      }
+    },
+    },
 };
 </script>
 
