@@ -9,7 +9,7 @@
  <td>{{product.prodName}}</td>
  <td>{{product.prodDesc}}</td>
  <td>{{product.price}}</td>
-
+ <td><button>Delete</button></td>
         </table>
 
     </div>

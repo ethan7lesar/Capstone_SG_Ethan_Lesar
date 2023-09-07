@@ -37,7 +37,7 @@
           >
           <button
             class="border-main rounded-[20px] bg-detail border-[1px] px-7 py-2"
-            @click="addToCart(product.productID)"
+            @click="addToCart(id)"
           >
             Add to cart
           </button>
