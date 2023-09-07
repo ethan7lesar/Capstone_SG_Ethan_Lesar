@@ -1,7 +1,8 @@
 import { createStore } from "vuex";
 import axios from "axios";
-const URL = "https://sg-backend-9zyd.onrender.com"
-import Cookies from "js-cookie"
+const URL = "https://sg-backend-9zyd.onrender.com";
+import Cookies from "js-cookie";
+import { data } from "browserslist";
 
 export default createStore({
   state: {
@@ -37,7 +38,7 @@ export default createStore({
       state.user = user;
     },
     setCart(state, value) {
-      state.cart = value
+      state.cart = value;
     },
     addProduct(state, product) {
       state.products.push(product); // Add the new product to the list.
@@ -51,13 +52,17 @@ export default createStore({
       );
     },
 
-
     clearCart(state) {
       state.cartItems = [];
     },
 
     addProductToCart(state, product) {
       state.cart.push(product);
+    },
+
+    deleteCart(state, cartID) {
+      // Remove the product with the given ID from the products list.
+      state.cart = state.cart.filter((cart) => cart.id !== cartID);
     },
     updateProduct(state, updatedProduct) {
       // Find the product in the state by its ID and update it
@@ -113,7 +118,6 @@ export default createStore({
       fetch("https://sg-backend-9zyd.onrender.com/products/" + id)
         .then((res) => res.json())
         .then((product) => context.commit("setProduct", product));
-        
     },
     getUsers: async (context) => {
       fetch("https://sg-backend-9zyd.onrender.com/users")
@@ -169,37 +173,40 @@ export default createStore({
         return false; // Indicate failure.
       }
     },
-        /** Cart **/
-        async getCart(context, id) {
-          const res = await axios.get(`${URL}/users/${id}/cart`);
-          context.commit('setCart', res.data)
-          console.log(id);
-        },
+    /** Cart **/
+    async getCart(context, id) {
+      const res = await axios.get(`${URL}/users/${id}/cart`);
+      context.commit("setCart", res.data);
+      console.log(id);
+    },
 
-//add to cart
+    //add to cart
 
-async addToCart({ commit }, { userID, productID }) {
-  try {
-    // Send a POST request to your server's API endpoint
-    const response = await axios.post(`https://sg-backend-9zyd.onrender.com/users/${userID}/cart`, {
-      userID,
-      productID,
-    });
+    async addToCart({ commit }, { userID, productID }) {
+      try {
+        // Send a POST request to your server's API endpoint
+        const response = await axios.post(
+          `https://sg-backend-9zyd.onrender.com/users/${userID}/cart`,
+          {
+            userID,
+            productID,
+          }
+        );
 
-    // Handle the response as needed
-    if (response.status === 200) {
-      // The item was added to the cart successfully
-      // You can commit a mutation to update the cart in your store if needed
-      commit('addProductToCart', response.data); // Assuming the response contains the added product
-    } else {
-      // Handle other response statuses or errors
-      // You can also use try-catch blocks to handle errors more precisely
-    }
-  } catch (error) {
-    console.error(error);
-    // Handle network errors or other exceptions
-  }
-},
+        // Handle the response as needed
+        if (response.status === 200) {
+          // The item was added to the cart successfully
+          // You can commit a mutation to update the cart in your store if needed
+          commit("addProductToCart", response.data); // Assuming the response contains the added product
+        } else {
+          // Handle other response statuses or errors
+          // You can also use try-catch blocks to handle errors more precisely
+        }
+      } catch (error) {
+        console.error(error);
+        // Handle network errors or other exceptions
+      }
+    },
 
     async updateProduct({ commit }, updatedProductData) {
       try {
@@ -244,7 +251,10 @@ async addToCart({ commit }, { userID, productID }) {
 
     async login(context, payload) {
       try {
-        const res = await axios.post(`https://sg-backend-9zyd.onrender.com/login`, payload);
+        const res = await axios.post(
+          `https://sg-backend-9zyd.onrender.com/login`,
+          payload
+        );
         console.log("Res: ", res.data.status);
         const { err, message, token, result } = res.data;
         console.log(result);
@@ -271,7 +281,7 @@ async addToCart({ commit }, { userID, productID }) {
           return { success: false, error: "Unknown error" };
         }
       } catch (err) {
-        console.log("Error")
+        console.log("Error");
       }
     },
     cookieCheck(context) {
@@ -289,8 +299,6 @@ async addToCart({ commit }, { userID, productID }) {
       context.commit("setUserData", null);
       Cookies.remove("userToken");
     },
-
-
   },
   modules: {},
 });

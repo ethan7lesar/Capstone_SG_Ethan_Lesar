@@ -74,7 +74,7 @@ export default {
       if (this.userData && this.userData.userID) {
         // Call the addToCart action with userID and prodID
         this.$store.dispatch('addToCart', {
-          userID: this.userData.userID,
+          userID: this.userData.userID, 
           productID,
         });
       } else {

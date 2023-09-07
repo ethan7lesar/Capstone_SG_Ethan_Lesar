@@ -26,11 +26,11 @@
       </div>
     </div>
 
-    <div>
-      <div>
-        <h1>Meet The Founder</h1>
-        <h3>Ethan Lesat</h3>
-        <p>
+    <div class="flex flex-row gap-10 mx-auto m-10 justify-center items-center">
+      <div class="w-1/2 flex flex-col gap-5">
+        <h1 class="text-detail text-[60px]">Meet The Founder</h1>
+        <h3 class="text-secondary text-[30px]">Ethan Lesar</h3>
+        <p class="text-secondary text-[20px]">
           Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus sunt
           consectetur delectus magnam eius, blanditiis fuga, nostrum ex adipisci
           quibusdam eligendi nihil quidem minus, quas magni? Numquam nihil
@@ -38,10 +38,8 @@
         </p>
       </div>
       <div>
-        <img src="" alt="">
-        <img src="" alt="">
+        <img src="https://i.postimg.cc/ZRvKnGxp/Group-69.png" alt="founder" />
       </div>
-
     </div>
   </main>
 </template>
