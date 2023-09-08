@@ -144,7 +144,7 @@ export default createStore({
       try {
         // Make the POST request to add the product.
         const response = await axios.post(
-          "https://sg-backend-9zyd.onrender.com/products/",
+          `${URL}/products/`,
           productData
         );
 

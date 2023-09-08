@@ -76,7 +76,7 @@
         <router-link to="/">Contact</router-link>
       </li>
       <li>
-        <router-link to="/">Admin</router-link>
+        <router-link to="/admin">Admin</router-link>
       </li>
     </ul>
     <div class="cart py-auto ms-6 pt-2">
