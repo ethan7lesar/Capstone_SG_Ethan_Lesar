@@ -27,7 +27,7 @@
             {{ product.price }}
           </td>
           <td>
-            <button>Delete</button>
+            <button @click="removeFromCart(product.cartID)">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -52,6 +52,20 @@ export default {
   mounted() {
     this.$store.dispatch("getCart", this.user.userID);
   },
+  methods: {
+    removeFromCart(cartID) {
+    const userID = this.user.userID;
+    
+    this.$store.dispatch('removeFromCart', { userID, cartID })
+      .then(() => {
+        // Optional: Perform any additional actions after successful removal
+      })
+      .catch((error) => {
+        console.error('Error removing item from cart:', error);
+      });
+  },
+  }
+
 };
 </script>
 

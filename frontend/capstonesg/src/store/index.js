@@ -60,9 +60,9 @@ export default createStore({
       state.cart.push(product);
     },
 
-    deleteCart(state, cartID) {
-      // Remove the product with the given ID from the products list.
-      state.cart = state.cart.filter((cart) => cart.id !== cartID);
+    removeFromCart(state, cartID) {
+      // Remove the item from the cart state
+      state.cart = state.cart.filter((cart) => cart.cartID !== cartID);
     },
     updateProduct(state, updatedProduct) {
       // Find the product in the state by its ID and update it
@@ -205,6 +205,15 @@ export default createStore({
       } catch (error) {
         console.error(error);
         // Handle network errors or other exceptions
+      }
+    },
+    async removeFromCart({ commit }, { userID, cartID }) {
+      try {
+        await axios.delete(`${URL}/users/${userID}/cart/${cartID}`);
+    
+        commit('removeFromCart', cartID);
+      } catch (error) {
+        console.error(error);
       }
     },
 
