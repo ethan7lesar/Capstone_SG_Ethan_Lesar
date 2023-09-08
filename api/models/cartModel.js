@@ -2,7 +2,7 @@ import db from "../config/index.js";
 
 export const getCart = (id, result) => {
   db.query(
-    `SELECT prodName,prodDesc ,price ,prodUrl
+    `SELECT cartID, prodName,prodDesc ,price ,prodUrl
      FROM Users
      INNER JOIN Cart ON Users.userID = Cart.userID
     INNER JOIN Products ON Cart.productID = Products.prodID
