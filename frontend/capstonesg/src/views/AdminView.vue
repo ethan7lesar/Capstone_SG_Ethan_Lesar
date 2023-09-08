@@ -30,7 +30,9 @@
         <td>{{ product.creator }}</td>
         <td>{{ product.prodYear }}</td>
         <td>{{ product.price }}</td>
-        <td><button class="mx-4">Edit</button><button @click= deleteProduct(product.prodID)>Delete</button></td>
+        <td><button class="mx-4">Edit</button>     
+          <router-link to="/admin/products/edit"><button class="mx-4">Edit</button></router-link>
+          <button @click= deleteProduct(product.prodID)>Delete</button></td>
       </tbody>
     </table>
   </div>

@@ -143,13 +143,25 @@ export default createStore({
     async addProduct({ commit }, productData) {
       try {
         // Make the POST request to add the product.
-        const response = await axios.post(
-          `${URL}/products/`,
-          productData
-        );
+        const response = await axios.post(`${URL}/products/`, productData);
 
         // Commit the mutation to update the state with the new product.
         commit("addProduct", response.data);
+
+        return true; // Indicate success.
+      } catch (err) {
+        console.error(err);
+        return false; // Indicate failure.
+      }
+    },
+
+    async editProduct({ commit }, productData, productID) {
+      try {
+        // Make the POST request to add the product.
+        const response = await axios.put(`${URL}/products/${productID}`, productData);
+
+        // Commit the mutation to update the state with the new product.
+        commit("editProduct", response.data);
 
         return true; // Indicate success.
       } catch (err) {
@@ -210,8 +222,8 @@ export default createStore({
     async removeFromCart({ commit }, { userID, cartID }) {
       try {
         await axios.delete(`${URL}/users/${userID}/cart/${cartID}`);
-    
-        commit('removeFromCart', cartID);
+
+        commit("removeFromCart", cartID);
       } catch (error) {
         console.error(error);
       }
@@ -301,6 +313,12 @@ export default createStore({
     },
     init(context) {
       context.dispatch("cookieCheck");
+    },
+    async logout(context) {
+      context.commit("setToken", null);
+      context.commit("setUser", null);
+      context.commit("setUserData", null);
+      Cookies.remove("userToken");
     },
     async logout(context) {
       context.commit("setToken", null);

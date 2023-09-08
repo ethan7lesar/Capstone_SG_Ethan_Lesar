@@ -2,7 +2,7 @@
     <div>
         <main class="flex flex-col w-fit mx-auto">
             
-            <label for="name">name</label>
+            <label for="name">Name</label>
             <input type="text" maxlength="255" autocomplete="off" required v-model="prodName" id="name" />
             <label for="model">Description</label>
             <input type="text" id="model" maxlength="255" autocomplete="off" required v-model="prodDesc"/>
@@ -30,6 +30,7 @@
               <div
                 id="success"
                 class="success bg-green-200 p-3 text-xl h-fit w-fit rounded-md"
+              
               >
                 Product Successfully Added ✅
               </div>
@@ -70,7 +71,15 @@ async addProduct() {
   const success = await this.$store.dispatch('addProduct', productData);
 
 if (success) {
-alert('Product added successfully!');
+  const successPop = document.getElementById("success");
+        successPop.classList.toggle("show");
+        await new Promise((resolve) => {
+          setTimeout(() => {
+            this.$router.push("/admin");
+            resolve();
+          }, 2000);
+        }); 
+// alert('Product added successfully!');
 this.prodName = '';
 this.prodDesc = '';
 this.price = '';
@@ -89,5 +98,6 @@ alert('Failed to add product. Please try again.');
 </script>
 
 <style scoped>
+
 
 </style>

@@ -107,6 +107,8 @@
             icon: "success",
             title: "Logged in Successfully",
             text: "You are now logged in!",
+            background: '#F6EA00',
+            color: "#000000"
           });
           this.$router.push("/");
         } else {
@@ -115,6 +117,7 @@
             icon: "error",
             title: "Login failed",
             text: errMsg,
+            
           });
         }
       } catch (e) {

@@ -75,11 +75,14 @@
       <li>
         <router-link to="/">Contact</router-link>
       </li>
+      <li v-show="userRole === 'Admin'">
+        <router-link  to="/admin">Admin</router-link>
+      </li>
       <li>
-        <router-link to="/admin">Admin</router-link>
+        <button v-show="userRole" @click="logout">Log Out</button>
       </li>
     </ul>
-    <div class="cart py-auto ms-6 pt-2">
+    <div class="cart py-auto ms-6 pt-2 " v-show="userRole">
       <router-link to="/cart">
         <svg
           xmlns="http://www.w3.org/2000/svg"
@@ -99,7 +102,25 @@
 </template>
 
 <script>
-export default {};
+export default {
+  computed:{
+    user(){
+      this.$store.state.userData
+    },
+    userData() {
+      return this.$store.state.userData;
+    },
+    userRole() {
+      return this.$store.state.userRole;
+    },
+  },
+  methods: {
+    logout() {
+      this.$store.dispatch("logout");
+      this.$router.push("/login");
+    },
+  },
+};
 </script>
 
 <style scoped>
