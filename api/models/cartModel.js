@@ -4,9 +4,9 @@ export const getCart = (id, result) => {
   db.query(
     `SELECT cartID, prodName,prodDesc ,price ,prodUrl
      FROM Users
-     INNER JOIN Cart ON Users.userID = Cart.userCode
+     INNER JOIN Cart ON Users.userID = Cart.userID
     INNER JOIN Products ON Cart.productID = Products.prodID
-    WHERE Cart.userCode = ? `,
+    WHERE Cart.userID = ? `,
     [id],
     (err, results) => {
       if (err) {
