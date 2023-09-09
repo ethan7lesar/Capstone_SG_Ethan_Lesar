@@ -67,13 +67,10 @@
         <router-link to="/products">Collectables</router-link>
       </li>
       <li>
-        <router-link to="/">My Collection</router-link>
-      </li>
-      <li>
         <router-link to="/about">About</router-link>
       </li>
       <li>
-        <router-link to="/">Contact</router-link>
+        <router-link to="/contact">Contact</router-link>
       </li>
       <li v-show="userRole === 'Admin'">
         <router-link  to="/admin">Admin</router-link>

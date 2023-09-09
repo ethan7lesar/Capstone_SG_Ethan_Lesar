@@ -70,12 +70,13 @@
         :product="product"
       />
     </section>
-    <section v-else>loading...</section>
+    <section v-else><Loader/></section>
   </main>
 </template>
 
 <script>
 import ProductCardComp from "@/components/ProductCardComp.vue";
+import Loader from "@/components/Loader.vue";
 
 export default {
   data() {
@@ -122,8 +123,13 @@ export default {
       this.selectedFilter = filter;
     },
   },
+  mounted(){
+    if(this.$store.state.userRole === null || this.$store.state.userRole === '' || this.$store.state.userRole === undefined){
+      this.$router.push('/login')
+    } 
+  },
 
-  components: { ProductCardComp },
+  components: { ProductCardComp, Loader },
 };
 </script>
 

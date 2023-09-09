@@ -11,6 +11,7 @@ export default {
 components: {NavBarComp, FooterComp},
 mounted() {
     this.$store.dispatch("getProducts");
+    this.$store.dispatch("getUsers");
 },
 
 created() {

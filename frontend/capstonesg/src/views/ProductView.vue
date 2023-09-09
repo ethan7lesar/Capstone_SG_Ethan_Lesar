@@ -8,9 +8,13 @@
           class="rounded-[30px] absolute top-[-10%] z-10 right-[31%] border-main border-[2px]"
           id="image"
         />
-        <img src="https://i.postimg.cc/L5YzqcFv/Ellipse-6.png " alt="podium" class="absolute bottom-0">
+        <img
+          src="https://i.postimg.cc/L5YzqcFv/Ellipse-6.png "
+          alt="podium"
+          class="absolute bottom-0"
+        />
       </div>
-      <div class=" flex flex-col gap-1">
+      <div class="flex flex-col gap-1">
         <h1 class="text-[60px] text-detail">{{ product.prodName }}</h1>
         <div class="flex gap-3">
           <h6 class="text-center text-[50px] text-secondary">
@@ -44,12 +48,18 @@
         </div>
       </div>
     </div>
-    <div v-else>loading</div>
+    <div v-else class=" flex justify-center items-center">
+      <Loader />
+    </div>
   </div>
 </template>
 
 <script>
+import Loader from "@/components/Loader.vue";
+import Swal from "sweetalert2";
+
 export default {
+  components: { Loader },
   computed: {
     product() {
       return this.$store.state.product;
@@ -69,19 +79,26 @@ export default {
   //   this.$store.dispatch("getProduct", this.$route.params.id);
   // },
   methods: {
-        addToCart(productID) {
+    addToCart(productID) {
       // Ensure the user is logged in
       if (this.userData && this.userData.userID) {
         // Call the addToCart action with userID and prodID
-        this.$store.dispatch('addToCart', {
-          userID: this.userData.userID, 
+        this.$store.dispatch("addToCart", {
+          userID: this.userData.userID,
           productID,
         });
+        Swal.fire({
+          icon: "success",
+          title: "Product Added To Cart Successfully",
+          background: "#F6EA00",
+          color: "#000000",
+        });
+        this.$router.push("/cart");
       } else {
         // Handle the case where the user is not logged in, prompt for login, etc.
       }
     },
-    },
+  },
 };
 </script>
 
@@ -101,8 +118,7 @@ export default {
   line-height: normal;
 }
 
-#image{
+#image {
   box-shadow: 0px 10px 4px 0px rgba(0, 0, 0, 0.25);
 }
-
 </style>

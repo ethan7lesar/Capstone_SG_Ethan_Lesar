@@ -1,11 +1,11 @@
 <template>
   <h1 class=" text-[50px] mx-auto text-secondary text-center">Cart:</h1>
-  <div class="flex flex-col w-fit border-main rounded-[30px] border-[5px] p-10 mx-auto my-10 bg-detail">
+  <div class="flex flex-col w-fit border-main rounded-[30px] border-[5px] p-10 mx-auto my-10 bg-detail mb-40">
   
     <table class=" flex flex-col gap-10">
-      <thead>
-        <tr class=" flex gap-6">
-          <th>Image</th>
+      <thead class=" mx-auto">
+        <tr class=" flex gap-10">
+          <th class=" ms-5">Image</th>
           <th>Products</th>
           <th>Description</th>
           <th>Price</th>
@@ -13,9 +13,9 @@
         </tr>
       </thead>
       <tbody v-for="product in getCart" :key="product.id" class=" flex gap-3">
-        <tr class=" flex gap-6">
-          <td>
-            <img :src="product.prodUrl" :alt="product.prodName" />
+        <tr class=" flex gap-10 justify-center">
+          <td class=" w-1/12  ">
+            <img :src="product.prodUrl" :alt="product.prodName" class=" h-fit rounded-[20px] border-[1px] border-black" />
           </td>
           <td>
             {{ product.prodName }}
@@ -38,6 +38,8 @@
 </template>
 
 <script>
+import Swal from "sweetalert2";
+
 export default {
   Name: "setCart",
   computed: {
@@ -59,6 +61,12 @@ export default {
     this.$store.dispatch('removeFromCart', { userID, cartID })
       .then(() => {
         // Optional: Perform any additional actions after successful removal
+        Swal.fire({
+            title: "Item Remove Successfully",
+            background: "#F6EA00",
+            color: "#000000",
+          });
+
       })
       .catch((error) => {
         console.error('Error removing item from cart:', error);

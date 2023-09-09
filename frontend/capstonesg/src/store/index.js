@@ -2,7 +2,7 @@ import { createStore } from "vuex";
 import axios from "axios";
 const URL = "https://sg-backend-9zyd.onrender.com";
 import Cookies from "js-cookie";
-import { data } from "browserslist";
+// import { data } from "browserslist";
 
 export default createStore({
   state: {
@@ -52,6 +52,12 @@ export default createStore({
       );
     },
 
+    deleteUser(state, userId) {
+      // Remove the product with the given ID from the products list.
+      state.users = state.users.filter(
+        (user) => user.id !== userId
+      );
+    },
     clearCart(state) {
       state.cartItems = [];
     },
@@ -64,15 +70,15 @@ export default createStore({
       // Remove the item from the cart state
       state.cart = state.cart.filter((cart) => cart.cartID !== cartID);
     },
-    updateProduct(state, updatedProduct) {
-      // Find the product in the state by its ID and update it
-      const index = state.products.findIndex(
-        (product) => product.id === updatedProduct.id
-      );
-      if (index !== -1) {
-        state.products[index] = updatedProduct;
-      }
-    },
+    // updateProduct(state, updatedProduct) {
+    //   // Find the product in the state by its ID and update it
+    //   const index = state.products.findIndex(
+    //     (product) => product.id === updatedProduct.id
+    //   );
+    //   if (index !== -1) {
+    //     state.products[index] = updatedProduct;
+    //   }
+    // },
 
     setRegStatus(state, status) {
       state.regStatus = status;
@@ -124,26 +130,18 @@ export default createStore({
         .then((res) => res.json())
         .then((users) => context.commit("setUsers", users));
     },
-    getUser: async (context, id) => {
-      try {
-        const res = await fetch(
-          `https://sg-backend-9zyd.onrender.com/users/${id}`
-        );
-        if (!res.ok) {
-          throw new Error("Failed to fetch user by ID");
-        }
-        const user = await res.json();
 
-        context.commit("setUser", user);
-      } catch (error) {
-        console.error(error);
-      }
+    getUser: async (context, id) => {
+      fetch("https://sg-backend-9zyd.onrender.com/users/"+ id)
+        .then((res) => res.json())
+        .then((user) => context.commit("setUser", user));
     },
+   
 
     async addProduct({ commit }, productData) {
       try {
         // Make the POST request to add the product.
-        const response = await axios.post(`${URL}/products/`, productData);
+        const response = await axios.post(`${URL}/products`, productData);
 
         // Commit the mutation to update the state with the new product.
         commit("addProduct", response.data);
@@ -155,20 +153,20 @@ export default createStore({
       }
     },
 
-    async editProduct({ commit }, productData, productID) {
-      try {
-        // Make the POST request to add the product.
-        const response = await axios.put(`${URL}/products/${productID}`, productData);
+    // async editProduct({ commit }, productData, productID) {
+    //   try {
+    //     // Make the POST request to add the product.
+    //     const response = await axios.put(`${URL}/products/${productID}`, productData);
 
-        // Commit the mutation to update the state with the new product.
-        commit("editProduct", response.data);
+    //     // Commit the mutation to update the state with the new product.
+    //     commit("editProduct", response.data);
 
-        return true; // Indicate success.
-      } catch (err) {
-        console.error(err);
-        return false; // Indicate failure.
-      }
-    },
+    //     return true; // Indicate success.
+    //   } catch (err) {
+    //     console.error(err);
+    //     return false; // Indicate failure.
+    //   }
+    // },
     async deleteProduct({ commit }, productId) {
       try {
         // Make the DELETE request to remove the product.
@@ -270,6 +268,23 @@ export default createStore({
       }
     },
 
+    async deleteUser({ commit }, userId) {
+      try {
+        // Make the DELETE request to remove the product.
+        await axios.delete(
+          `https://sg-backend-9zyd.onrender.com/users/${userId}`
+        );
+
+        // Commit the mutation to delete the product from the state.
+        commit("deleteUser", userId);
+
+        return true; // Indicate success.
+      } catch (err) {
+        console.error(err);
+        return false; // Indicate failure.
+      }
+    },
+
     async login(context, payload) {
       try {
         const res = await axios.post(
@@ -305,6 +320,8 @@ export default createStore({
         console.log("Error");
       }
     },
+
+
     cookieCheck(context) {
       const token = Cookies.get("userToken");
       if (token) {
