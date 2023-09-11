@@ -120,8 +120,8 @@ export default {
             icon: "success",
             title: "Logged in Successfully",
             text: "You are now logged in!",
-            background: "#F6EA00",
-            color: "#000000",
+            background: "#000000",
+            color: "#F6EA00",
           });
           this.$router.push("/");
         } else {
@@ -130,8 +130,8 @@ export default {
             icon: "error",
             title: "Login failed",
             text: errMsg,
-            background: "#F6EA00",
-            color: "#000000",
+            background: "#000000",
+            color: "#F6EA00",
           });
         }
       } catch (e) {
@@ -160,10 +160,10 @@ label {
   color: #f6ea00;
 }
 
-main:hover {
+form:hover {
   box-shadow: 0px 10px 4px 0px #f6ea00;
 }
-main {
+form {
   transition: 0.8s;
 }
 </style>

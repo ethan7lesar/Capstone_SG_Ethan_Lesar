@@ -65,7 +65,7 @@
         <td>{{ product.price }}</td>
         <td class="">
           <router-link
-            :to="{ name: 'EditProduct', params: { id: product.prodID } }"
+            :to="{ name: 'admin edit product', params: { id : product.prodID } }"
             class="p-5"
             >Edit</router-link
           >
@@ -112,8 +112,8 @@ export default {
          // You can dispatch this if you need to refresh the product list.
          Swal.fire({
             title: "Product Deleted Successfully",
-            background: "#F6EA00",
-            color: "#000000",
+            background: "#000000",
+            color: "#F6EA00",
           });
       } else {
         alert("Failed to delete product. Please try again.");
@@ -127,8 +127,8 @@ export default {
         this.$store.dispatch("getUsers"); // You can dispatch this if you need to refresh the product list.
         Swal.fire({
             title: "User Deleted Successfully",
-            background: "#F6EA00",
-            color: "#000000",
+            background: "#000000",
+            color: "#F6EA00",
           });
       } else {
         alert("Failed to delete user. Please try again.");

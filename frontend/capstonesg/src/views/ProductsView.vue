@@ -70,7 +70,7 @@
         :product="product"
       />
     </section>
-    <section v-else><Loader/></section>
+    <section v-else class=" flex justify-center items-center"><Loader/></section>
   </main>
 </template>
 

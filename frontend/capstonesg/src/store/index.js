@@ -44,6 +44,12 @@ export default createStore({
       state.products.push(product); // Add the new product to the list.
     },
     // Mutations to modify the cart state
+    updateProduct(state, data) {
+      const index = state.products.findIndex(product => product.id === data.id);
+      if (index !== -1) {
+        state.products[index] = data;
+      }
+    },
 
     deleteProduct(state, productId) {
       // Remove the product with the given ID from the products list.
@@ -58,6 +64,13 @@ export default createStore({
         (user) => user.id !== userId
       );
     },
+    updateUser(state, data) {
+      const index = state.userData.userID;
+      if (index !== -1) {
+        state.users[index] = data;
+      }
+    },
+
     clearCart(state) {
       state.cartItems = [];
     },
@@ -70,15 +83,6 @@ export default createStore({
       // Remove the item from the cart state
       state.cart = state.cart.filter((cart) => cart.cartID !== cartID);
     },
-    // updateProduct(state, updatedProduct) {
-    //   // Find the product in the state by its ID and update it
-    //   const index = state.products.findIndex(
-    //     (product) => product.id === updatedProduct.id
-    //   );
-    //   if (index !== -1) {
-    //     state.products[index] = updatedProduct;
-    //   }
-    // },
 
     setRegStatus(state, status) {
       state.regStatus = status;
@@ -121,7 +125,7 @@ export default createStore({
         .then((products) => context.commit("setProducts", products));
     },
     getProduct: async (context, id) => {
-      fetch("https://sg-backend-9zyd.onrender.com/products/" + id)
+      fetch(`https://sg-backend-9zyd.onrender.com/products/${id}`)
         .then((res) => res.json())
         .then((product) => context.commit("setProduct", product));
     },
@@ -153,20 +157,20 @@ export default createStore({
       }
     },
 
-    // async editProduct({ commit }, productData, productID) {
-    //   try {
-    //     // Make the POST request to add the product.
-    //     const response = await axios.put(`${URL}/products/${productID}`, productData);
-
-    //     // Commit the mutation to update the state with the new product.
-    //     commit("editProduct", response.data);
-
-    //     return true; // Indicate success.
-    //   } catch (err) {
-    //     console.error(err);
-    //     return false; // Indicate failure.
-    //   }
-    // },
+    async updateProduct({ commit }, data) {
+      try {
+        const response = await axios.put(`${URL}/products/${data.id}`, data);
+        if (response.status === 200) {
+          commit('updateProduct', data);
+          return true;
+        } else {
+          return false;
+        }
+      } catch (err) {
+        console.error(err);
+        return false; 
+      }
+    },
     async deleteProduct({ commit }, productId) {
       try {
         // Make the DELETE request to remove the product.
@@ -227,22 +231,22 @@ export default createStore({
       }
     },
 
-    async updateProduct({ commit }, updatedProductData) {
+    async updateUser({ commit }, data) {
       try {
-        const response = await axios.put(
-          `https://sg-backend-9zyd.onrender.com/product/${updatedProductData.id}`,
-          updatedProductData
-        );
-
-        // Commit the mutation to update the product in the state
-        commit("updateProduct", response.data);
-
-        return true; // Indicate success
-      } catch (error) {
-        console.error(error);
-        return false; // Indicate failure
+        const response = await axios.put(`${URL}/users/${data.id}`, data);
+        if (response.status === 200) {
+          commit('updateUser', data);
+          return true;
+        } else {
+          return false;
+        }
+      } catch (err) {
+        console.error(err);
+        return false; 
       }
     },
+
+   
     async register(context, payload) {
       console.log("Reached");
       try {

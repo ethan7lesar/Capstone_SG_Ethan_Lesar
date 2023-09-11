@@ -31,7 +31,7 @@
 
       <div class="flex justify-between gap-5 text-center">
         <label for="price">price</label>
-        <input type="text" autocomplete="off" required v-model="price" />
+        <input type="number" autocomplete="off" required v-model="price" />
       </div>
 
       <div class="flex justify-between gap-5 text-center">
@@ -91,8 +91,8 @@ export default {
         Swal.fire({
           icon: "success",
           title: "Product Added Successfully",
-          background: "#F6EA00",
-          color: "#000000",
+          background: "#000000",
+            color: "#F6EA00",
         });
         this.$router.push("/admin");
       } else {

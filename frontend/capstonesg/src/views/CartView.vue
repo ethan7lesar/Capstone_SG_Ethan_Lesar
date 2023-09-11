@@ -63,8 +63,8 @@ export default {
         // Optional: Perform any additional actions after successful removal
         Swal.fire({
             title: "Item Remove Successfully",
-            background: "#F6EA00",
-            color: "#000000",
+            background: "#000000",
+            color: "#F6EA00",
           });
 
       })

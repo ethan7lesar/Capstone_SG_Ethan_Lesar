@@ -115,16 +115,16 @@ export default {
             icon: "success",
             title: "Registration successful",
             text: "You are now registered, please log in",
-            background: "#F6EA00",
-            color: "#000000",
+           background: "#000000",
+            color: "#F6EA00",
           });
         } else {
           await Swal.fire({
             icon: "error",
             title: "Registration failed",
             text: resp.error || "Unexpected error",
-            background: "#F6EA00",
-            color: "#000000",
+            background: "#000000",
+            color: "#F6EA00",
           });
         }
         this.$router.push("/login");
@@ -154,10 +154,10 @@ label {
   color: #f6ea00;
 }
 
-main:hover {
+form:hover {
   box-shadow: 0px 10px 4px 0px #f6ea00;
 }
-main {
+form {
   transition: 0.8s;
 }
 </style>
