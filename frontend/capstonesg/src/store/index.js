@@ -3,6 +3,8 @@ import axios from "axios";
 const URL = "https://sg-backend-9zyd.onrender.com";
 import Cookies from "js-cookie";
 // import { data } from "browserslist";
+import Swal from 'sweetalert2';
+import router from "@/router";
 
 export default createStore({
   state: {
@@ -142,15 +144,32 @@ export default createStore({
     },
    
 
-    async addProduct({ commit }, productData) {
+    async addProduct(context, productData) {
       try {
         // Make the POST request to add the product.
-        const response = await axios.post(`${URL}/products`, productData);
+        const response = (await axios.post(`${URL}/products`, productData)).data;
 
         // Commit the mutation to update the state with the new product.
-        commit("addProduct", response.data);
+        if(response) {
+          context.dispatch("getProducts")
+          Swal.fire({
+                icon: "success",
+                title: "Product Added Successfully",
+                background: "#000000",
+                  color: "#F6EA00",
+              });
+            router.push({name: 'admin'})
+        }else {
+          Swal.fire({
+            icon: "error",
+            title: "Product wasn't added",
+            background: "#000000",
+              color: "#F6EA00",
+          });
+        }
+    
 
-        return true; // Indicate success.
+        // return true; // Indicate success.
       } catch (err) {
         console.error(err);
         return false; // Indicate failure.

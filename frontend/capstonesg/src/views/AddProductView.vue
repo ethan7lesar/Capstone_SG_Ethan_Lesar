@@ -11,7 +11,7 @@
           maxlength="255"
           autocomplete="off"
           required
-          v-model="prodName"
+          v-model="productData.prodName"
           id="name"
         />
       </div>
@@ -25,79 +25,74 @@
           maxlength="255"
           autocomplete="off"
           required
-          v-model="prodDesc"
+          v-model="productData.prodDesc"
         />
       </div>
 
       <div class="flex justify-between gap-5 text-center">
         <label for="price">price</label>
-        <input type="number" autocomplete="off" required v-model="price" />
+        <input type="number" autocomplete="off" required v-model="productData.price" />
       </div>
 
       <div class="flex justify-between gap-5 text-center">
         <label for="Year">Production Year</label>
-        <input type="number" autocomplete="off" required v-model="prodYear" />
+        <input type="number" autocomplete="off" required v-model="productData.prodYear" />
       </div>
       <div class="flex justify-between gap-5 text-center">
         <label for="price">Creator</label>
-        <input type="text" autocomplete="off" required v-model="creator" />
+        <input type="text" autocomplete="off" required v-model="productData.creator" />
       </div>
       <div class="flex justify-between gap-5 text-center">
         <label for="price">URL</label>
-        <input type="url" autocomplete="off" required v-model="prodUrl" />
+        <input type="url" autocomplete="off" required v-model="productData.prodUrl" />
       </div>
 
       <div class="flex items-center mx-auto">
-        <button class=" border-[2px] border-main bg-detail rounded-[30px] p-2 text-[20px]" @click="addProduct">submit</button>
+        <button class=" border-[2px] border-main bg-detail rounded-[30px] p-2 text-[20px]" @click.prevent="addProduct">submit</button>
       </div>
     </main>
   </div>
 </template>
 
 <script>
-  import Swal from 'sweetalert2';
+ 
 export default {
   data() {
     return {
-      prodName: "",
-      prodDesc: "",
-      price: "",
-      prodYear: "",
-      creator: "",
-      prodUrl: "",
+      productData: {
+        prodName: "",
+        prodDesc: "",
+        price: "",
+        prodYear: "",
+        creator: "",
+        prodUrl: "",
+      }
     };
   },
   methods: {
-    async addProduct() {
-      const productData = {
-        prodName: this.prodName,
-        prodDesc: this.prodDesc,
-        price: this.price,
-        prodYear: this.prodYear,
-        creator: this.creator,
-        prodUrl: this.prodUrl,
-      };
+     addProduct() {
+    
 
-      const success = await this.$store.dispatch("addProduct", productData);
+      this.$store.dispatch("addProduct", this.productData);
 
-      if (success) {
-        // alert('Product added successfully!');
-        this.prodName = "";
-        this.prodDesc = "";
-        this.price = "";
-        this.prodYear = "";
-        this.creator = "";
-        this.prodUrl = "";
-        Swal.fire({
-          icon: "success",
-          title: "Product Added Successfully",
-          background: "#000000",
-            color: "#F6EA00",
-        });
-        this.$router.push("/admin");
-      } else {
-        alert("Failed to add product. Please try again.");
-      }
+      // if (success) {
+      //   // alert('Product added successfully!');
+      //   this.prodName = "";
+      //   this.prodDesc = "";
+      //   this.price = "";
+      //   this.prodYear = "";
+      //   this.creator = "";
+      //   this.prodUrl = "";
+      //   Swal.fire({
+      //     icon: "success",
+      //     title: "Product Added Successfully",
+      //     background: "#000000",
+      //       color: "#F6EA00",
+      //   });
+      //   this.$router.push("/admin");
+      // } else {
+      //   alert("Failed to add product. Please try again.");
+      // }
     },
   },
 };

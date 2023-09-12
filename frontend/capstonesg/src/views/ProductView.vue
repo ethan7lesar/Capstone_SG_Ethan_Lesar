@@ -1,11 +1,11 @@
 <template>
   <div class="main mb-28 mt-10 px-28">
-    <div v-if="product" class="flex">
+    <div v-if="product" class="flex h-[65vh]" >
       <div class="ms-20 mt-20 relative w-[50%]">
         <img
           :src="product.prodUrl"
           :alt="product.prodName"
-          class="rounded-[30px] absolute top-[-10%] z-10 right-[31%] border-main border-[2px]"
+          class="rounded-[30px] absolute top-[-10%] z-10 right-[31%] border-main border-[2px] w-80"
           id="image"
         />
         <img
@@ -17,7 +17,7 @@
       <div class="flex flex-col gap-1">
         <h1 class="text-[60px] text-detail">{{ product.prodName }}</h1>
         <div class="flex gap-3">
-          <h6 class="text-center text-[50px] text-secondary">
+          <h6 class="text-center text-[40px] text-secondary prouct-name">
             By {{ product.creator }}
           </h6>
           <h1 class="number text-secondary text-[60px] border-main ms-5">
@@ -26,10 +26,6 @@
         </div>
         <p class="text-secondary text-[15px] w-72">
           {{ product.prodDesc }}
-          Lorem, ipsum dolor sit amet consectetur adipisicing elit. Expedita
-          fugit ullam, adipisci repellendus provident recusandae architecto
-          nihil quaerat deleniti animi nisi ad sed aperiam reprehenderit at
-          quas! Consectetur, ducimus architecto.
         </p>
         <h6 class="text-[22px] text-secondary">R{{ product.price }}</h6>
 
@@ -103,6 +99,9 @@ export default {
 </script>
 
 <style scoped>
+.prouct-name{
+  text-transform: uppercase;
+}
 .main {
   background: conic-gradient(
     from 31deg at 60.1% 50%,

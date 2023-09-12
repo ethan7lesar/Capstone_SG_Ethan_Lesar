@@ -32,10 +32,10 @@
         <button
           type="button"
           class="filter-btn rounded-[25px] border-[2px] p-2 border-detail"
-          :class="{ 'active-btn': selectedFilter === 'bored' }"
-          @click="selectFilter('borded')"
+          :class="{ 'active-btn': selectedFilter === 'lonesamurai' }"
+          @click="selectFilter('lonesamurai')"
         >
-          Bored Samuari
+          Lone Samuari
         </button>
         <button
           type="button"
@@ -59,15 +59,16 @@
         :class="{ 'active-btn': selectedFilter === 'rockstar' }"
         @click="selectFilter('rockstar')"
       >
-        Cyber Punk
+        RockStar
       </button>
       </div>
     </div>
-    <section v-if="filteredProducts.length > 0" class="grid-col-4">
+    <section v-if="filteredProducts.length > 0" class="grid grid-cols-3 mt-3">
       <ProductCardComp
         v-for="product of filteredProducts"
         :key="product.prodID"
         :product="product"
+        class=" mx-auto"
       />
     </section>
     <section v-else class=" flex justify-center items-center"><Loader/></section>
@@ -96,7 +97,7 @@ export default {
       // const sorted.
       if (this.selectedFilter && this.selectedFilter !== "all") {
         sorted = sorted.filter(
-          (product) => product.category === this.selectedFilter
+          (product) => product.creator === this.selectedFilter
         );
       }
 

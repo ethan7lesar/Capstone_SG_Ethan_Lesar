@@ -144,4 +144,19 @@ nav a {
 nav a.router-link-exact-active {
   color: #f6ea00;
 }
+li > *{
+ transition: 1ms; 
+}
+
+ li > *:hover{
+  border-bottom: 2px solid #f6ea00;
+  
+}
+
+svg:hover{
+  width: 34px;
+  height: 34px;
+  transition: 0.2s;
+}
+
 </style>
