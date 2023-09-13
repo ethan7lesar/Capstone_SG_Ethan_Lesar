@@ -32,6 +32,9 @@ export default {
 
 <style scoped>
 
+
+
+
 @media screen and (max-width:400px) {
   .faq{
     display: none;

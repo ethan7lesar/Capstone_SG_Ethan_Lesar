@@ -129,6 +129,16 @@ line-height: normal;
 
 }
 
+
+button:hover {
+  color: black;
+  background: #f6ea00;
+box-shadow: 0 0 30px 5px #f6ea00;
+-webkit-transition: all 0.2s ease-out;
+-moz-transition: all 0.2s ease-out;
+transition: all 0.2s ease-out;
+}
+
 @media screen and (min-width: 1024px) {
   .label {
     font-size: 1rem;

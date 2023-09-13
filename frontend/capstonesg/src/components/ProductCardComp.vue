@@ -28,4 +28,14 @@ export default {
 .card {
   box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
 }
+
+
+a:hover {
+  color: black;
+  background: #f6ea00;
+box-shadow: 0 0 30px 5px #f6ea00;
+-webkit-transition: all 0.2s ease-out;
+-moz-transition: all 0.2s ease-out;
+transition: all 0.2s ease-out;
+}
 </style>

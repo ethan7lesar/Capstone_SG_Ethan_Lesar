@@ -7,10 +7,13 @@
       >
         <h1 class="text-center text-detail text-[40px]">Vision</h1>
         <p class="text-secondary text-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Minus, vitae
-          sequi. Repellendus impedit ea officia! Dicta molestias provident
-          asperiores quis eaque quam voluptates sequi doloremque, possimus fuga
-          recusandae excepturi velit.
+          At SG NFT Store, our vision is to revolutionize the way people collect
+          and appreciate digital art and collectibles. We aspire to be the
+          leading destination for NFT enthusiasts, offering a curated selection
+          of rare and innovative creations. Our commitment to fostering a
+          vibrant community, providing access to exclusive content, and pushing
+          the boundaries of what's possible in the NFT space drives us to
+          continually innovate and empower digital collectors worldwide.
         </p>
       </div>
       <div
@@ -18,10 +21,12 @@
       >
         <h1 class="text-center text-detail text-[40px]">Mission</h1>
         <p class="text-secondary text-center">
-          Lorem ipsum dolor sit amet consectetur adipisicing elit. Voluptatem
-          reprehenderit impedit rem odio asperiores perspiciatis repellat cum,
-          quidem itaque expedita quod, veritatis, officiis repellendus a
-          molestiae praesentium dolores hic sint.
+          Our mission at SG NFT Store is to empower digital collectors by
+          providing a secure, user-friendly platform that offers access to
+          unique NFTs. We strive to curate a diverse range of digital art and
+          collectibles, foster a thriving community of creators and enthusiasts,
+          and continuously push the boundaries of NFT technology to create a
+          seamless and exciting experience for our users
         </p>
       </div>
     </div>
@@ -31,10 +36,12 @@
         <h1 class="text-detail text-[60px]">Meet The Founder</h1>
         <h3 class="text-secondary text-[30px]">Ethan Lesar</h3>
         <p class="text-secondary text-[20px]">
-          Lorem ipsum dolor, sit amet consectetur adipisicing elit. Natus sunt
-          consectetur delectus magnam eius, blanditiis fuga, nostrum ex adipisci
-          quibusdam eligendi nihil quidem minus, quas magni? Numquam nihil
-          pariatur incidunt!
+          Driven by this vision, Ethan tirelessly worked to create a platform
+          that reflects his commitment to curating exceptional NFTs and
+          fostering a vibrant community of creators and collectors. His
+          innovative spirit and dedication to quality have established SG NFT
+          Store as a trusted destination for digital art and collectibles
+          enthusiasts worldwide.
         </p>
       </div>
       <div>
@@ -46,11 +53,15 @@
 
 <script>
 export default {
-  mounted(){
-    if(this.$store.state.userRole === null || this.$store.state.userRole === '' || this.$store.state.userRole === undefined){
-      this.$router.push('/login')
-    } 
-  }
+  mounted() {
+    if (
+      this.$store.state.userRole === null ||
+      this.$store.state.userRole === "" ||
+      this.$store.state.userRole === undefined
+    ) {
+      this.$router.push("/login");
+    }
+  },
 };
 </script>
 

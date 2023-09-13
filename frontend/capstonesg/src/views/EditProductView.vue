@@ -177,4 +177,12 @@ main:hover {
 main {
   transition: 0.8s;
 }
+button:hover {
+  color: black;
+  background: #f6ea00;
+box-shadow: 0 0 30px 5px #f6ea00;
+-webkit-transition: all 0.2s ease-out;
+-moz-transition: all 0.2s ease-out;
+transition: all 0.2s ease-out;
+}
 </style>

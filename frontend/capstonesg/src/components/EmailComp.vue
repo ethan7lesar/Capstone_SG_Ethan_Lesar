@@ -12,10 +12,10 @@
         Subscribe To Get The Latest Art
       </h1>
       <p class="text-secondary mb-7 w-8/12">
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sed
-        necessitatibus odit nesciunt recusandae quos blanditiis optio corrupti
-        quas, sint suscipit voluptas quo quis consequuntur expedita, facere
-        alias at consequatur animi?
+        Join the SG NFT Store mailing list today and embark on a digital art
+        journey like never before! Subscribers get early access to the hottest
+        NFT drops, exclusive discounts, and a front-row seat to the world of
+        blockchain collectibles.
       </p>
 
       <form action="https://formspree.io/f/xleyleew" method="POST">
@@ -50,5 +50,14 @@ export default {};
     #000 57.02%,
     rgba(50, 50, 50, 0.5) 78.02%
   );
+}
+
+button:hover {
+  color: black;
+  background: #f6ea00;
+  box-shadow: 0 0 30px 5px #f6ea00;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 </style>

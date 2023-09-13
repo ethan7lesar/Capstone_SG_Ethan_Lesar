@@ -1,33 +1,29 @@
 <template>
   <h1 class=" text-[50px] mx-auto text-secondary text-center">Cart:</h1>
-  <div class="flex flex-col w-fit border-main rounded-[30px] border-[5px] p-10 mx-auto my-10 bg-detail mb-40">
+  <div class="flex flex-col w-1/3 border-main rounded-[30px] border-[5px] p-10 mx-auto my-10 bg-detail mb-40">
   
-    <table class=" flex flex-col gap-10">
+    <table class=" flex flex-col gap-10 w-fit">
       <thead class=" mx-auto">
-        <tr class=" flex gap-10">
-          <th class=" ms-5">Image</th>
+        <tr class=" flex gap-14">
+          <th class=" ">Image</th>
           <th>Products</th>
-          <th>Description</th>
           <th>Price</th>
-          <th>Remove From Cart</th>
+          <th>Actions</th>
         </tr>
       </thead>
       <tbody v-for="product in getCart" :key="product.id" class=" flex gap-3">
         <tr class=" flex gap-10 justify-center">
-          <td class=" w-1/12  ">
+          <td class=" w-4/12">
             <img :src="product.prodUrl" :alt="product.prodName" class=" h-fit rounded-[20px] border-[1px] border-black" />
           </td>
-          <td>
+          <td class="ps-2">
             {{ product.prodName }}
           </td>
-          <td>
-            {{ product.prodDesc }}
+          <td class=" me-4">
+           {{ product.price }}
           </td>
           <td>
-            {{ product.price }}
-          </td>
-          <td>
-            <button @click="removeFromCart(product.cartID)">Delete</button>
+            <button class=" border-[2px] border-main w-fit p-1 mx-auto  rounded-[30px]" @click="removeFromCart(product.cartID)">Delete</button>
           </td>
         </tr>
       </tbody>
@@ -79,5 +75,13 @@ export default {
 
 <style scoped>
 
+button:hover {
+  color: #f6ea00;
+  background: black;
+box-shadow: 0 0 30px 5px black;
+-webkit-transition: all 0.2s ease-out;
+-moz-transition: all 0.2s ease-out;
+transition: all 0.2s ease-out;
+}
 
 </style>
