@@ -45,7 +45,7 @@
     <div class="btnandlink flex flex-col gap-1 mt-1">
       <button type="submit" class=" border-[2px] border-main bg-detail rounded-[30px] p-2 text-[20px] ">Register</button>
       <p>Already have an account ?</p>
-      <router-link to="/login" class="text-detail text-[25px]">Login</router-link>
+      <router-link to="/login" class="text-detail text-[25px] w-fit mx-auto">Login</router-link>
     </div>
   </form>
 </template>
@@ -128,5 +128,9 @@ box-shadow: 0 0 30px 5px #f6ea00;
 -webkit-transition: all 0.2s ease-out;
 -moz-transition: all 0.2s ease-out;
 transition: all 0.2s ease-out;
+}
+
+a:hover {
+  border-bottom: 2px solid #f6ea00;
 }
 </style>

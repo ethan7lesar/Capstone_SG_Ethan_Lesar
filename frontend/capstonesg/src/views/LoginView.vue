@@ -47,7 +47,7 @@
         Login
       </button>
       <p>Need an account ?</p>
-      <router-link to="/register" class="text-detail text-[25px]"
+      <router-link to="/register" class="text-detail text-[25px] w-fit mx-auto"
         >Register</router-link
       >
     </div>
@@ -135,5 +135,9 @@ box-shadow: 0 0 30px 5px #f6ea00;
 -webkit-transition: all 0.2s ease-out;
 -moz-transition: all 0.2s ease-out;
 transition: all 0.2s ease-out;
+}
+
+a:hover {
+  border-bottom: 2px solid #f6ea00;
 }
 </style>

@@ -19,12 +19,16 @@ export default createStore({
     error: null,
     regStatus: null,
     logStatus: null,
-    cart: null,
+    cart: [] || null,
   },
   getters: {
-    // cartProducts (state, getters) {
-    //   return state.
-    // }
+    cartTotalPrice(state) {
+      // Use the reduce function to sum the amounts in the cart
+      return state.cart.reduce(
+        (total, product) => total + parseFloat(product.price),
+        0
+      );
+    },
   },
   mutations: {
     setProducts: (state, products) => {
@@ -119,7 +123,12 @@ export default createStore({
     setError(state, error) {
       state.error = error;
     },
+    clearCart(state) {
+      state.cartItems = [];
+    }
   },
+
+  
   actions: {
     getProducts: async (context) => {
       fetch("https://sg-backend-9zyd.onrender.com/products")
@@ -366,6 +375,14 @@ export default createStore({
       context.commit("setUserData", null);
       Cookies.remove("userToken");
     },
+    async clearCart({ commit }, { userID }) {
+      try {
+        await axios.delete(`${URL}/users/${userID}/cart`);
+        commit("clearCart", userID);
+      } catch (error) {
+        console.error(error);
+      }
+    }
   },
   modules: {},
 });
