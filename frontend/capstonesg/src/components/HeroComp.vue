@@ -1,7 +1,7 @@
 <template>
   <header class="flex mt-20">
-    <div class="flex-1 ms-24">
-      <h1 class=" text-secondary text-[78px]">Discover The World of digital art.</h1>
+    <div class="flex-1 ms-24 hero">
+      <h1 class=" text-secondary text-[78px] heroText">Discover The World of digital art.</h1>
       <div class="buttons flex gap-20 mt-10">
         <router-link class=" border-[1px] border-main p-5 rounded-[15px] bg-detail text-contrast " to="/products">Discover Art</router-link>
         <router-link to="/about" class="border-[1px] border-detail p-5 rounded-[15px] text-detail">How we work</router-link>
@@ -34,5 +34,34 @@ box-shadow: 0 0 30px 5px #f6ea00;
 -webkit-transition: all 0.2s ease-out;
 -moz-transition: all 0.2s ease-out;
 transition: all 0.2s ease-out;
+}
+
+@media screen and (max-width: 400px) {
+.heroText{
+
+  font-size: 30px;
+}
+
+a{
+padding: 4px;
+font-size: 10px;
+margin-bottom: 2px;
+font-size: 10px;
+}
+header{
+flex-direction: column;
+  margin-top: 10px;
+}
+.hero{
+  margin: 0px;
+  margin-left: 10px !important;
+}
+
+.buttons{
+  margin-top: 10px;
+}
+img{
+  margin-top: 10px;
+}
 }
 </style>

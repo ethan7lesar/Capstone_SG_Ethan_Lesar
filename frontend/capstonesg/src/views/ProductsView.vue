@@ -1,7 +1,7 @@
 <template>
   <main class="main">
     <h1 class="text-center text-[50px] text-secondary">Collections</h1>
-    <div class="flex gap-56 px-5 mt-3">
+    <div class="flex gap-56 px-5 mt-3 sorts">
       <input
       type="search"
         v-model="searchTerm"
@@ -20,7 +20,7 @@
           <option value="price-low">Sort by Price (Low to High)</option>
         </select>
       </div>
-      <div class="my-auto flex text-detail gap-4">
+      <div class="my-auto flex text-detail gap-4 buttons">
         <button
           type="button"
           class="filter-btn rounded-[25px] border-[2px] p-2 border-detail"
@@ -63,7 +63,7 @@
       </button>
       </div>
     </div>
-    <section v-if="filteredProducts.length > 0" class="grid grid-cols-3 mt-3">
+    <section v-if="filteredProducts.length > 0" class="grid grid-cols-3 mt-3 products">
       <ProductCardComp
         v-for="product of filteredProducts"
         :key="product.prodID"
@@ -157,5 +157,33 @@ box-shadow: 0 0 30px 5px #f6ea00;
 -webkit-transition: all 0.2s ease-out;
 -moz-transition: all 0.2s ease-out;
 transition: all 0.2s ease-out;
+}
+
+@media screen and (max-width: 400px) {
+
+  h1{
+    font-size: 30px;
+  }
+.sorts{
+  flex-direction: column;
+  gap: 4px;
+  font-size: 10px ;
+  width: fit-content;
+}  
+.products{
+  display: flex !important; 
+  flex-direction: column;
+}
+
+.sort-select{
+  width: fit-content;
+}
+input{
+  width: fit-content !important;
+} 
+.buttons{
+  display: flex;
+  flex-wrap: wrap;
+}
 }
 </style>

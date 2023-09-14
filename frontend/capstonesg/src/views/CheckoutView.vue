@@ -1,21 +1,22 @@
 <template>
-  <div class="flex mb-10">
-    <div class="w-1/2 flex flex-col gap-4 items-center justify-center">
+  <div class="flex mb-10" id="main">
+    <div class="w-1/2 flex flex-col gap-4 items-center justify-center"
+  >
       <h1 class="text-secondary mx-auto text-[30px]">CONFIRM YOUR PAYMENT</h1>
-      <div class="flex justify-around w-2/3">
+      <div class="flex justify-around w-2/3" id="payment">
         <label for="name">Card Holder Name:</label>
         <input class="ms-auto" required ref="ownerInput" />
       </div>
-      <div class="card-number flex justify-around w-2/3">
+      <div class="card-number flex justify-around w-2/3" id="payment">
         <label>Card Number:</label>
         <input type="number" required ref="cardNumberInput" class="ms-auto" />
       </div>
-      <div class="cvv flex justify-around w-2/3">
+      <div class="cvv flex justify-around w-2/3" id="payment">
         <label class="me-auto">CVV:</label>
         <input class="w-[80px]" type="password" required ref="cvvInput" />
       </div>
 
-      <div class=" ">
+      <div class="last">
         <div class="selection flex flex-col justify-center items-center">
           <h3 class="text-detail text-[20px]">Expiry Date:</h3>
           <div class="date">
@@ -79,6 +80,7 @@
     </div>
     <div
       class="flex flex-col w-1/3 border-main rounded-[30px] border-[5px] p-10 mx-auto my-10 bg-detail mb-40"
+      id="cart"
     >
       <h1 class="text-main mx-auto text-[20px]">Items:</h1>
       <table class="flex flex-col gap-10 w-fit">
@@ -244,5 +246,79 @@ button:hover {
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
+}
+
+@media screen and (max-width: 400px) {
+
+  input{
+    width: fit-content;
+    height: fit-content;
+    padding-left: 0px !important;
+    font-size: 12px
+  }
+
+  #main{
+    flex-direction: column;
+  }
+
+  h1{
+    font-size: 10px;
+  }
+  #cart{
+    width: fit-content;
+  padding: 0px;
+  }
+
+  table{
+    font-size: 10px;
+    gap: 0;
+    padding: 10px;
+  }
+  tbody{
+    gap: 1;
+  }
+  a{
+    font-size: 12px;
+    padding: 2px;
+    margin-bottom: 10px;
+  }
+
+  tr{
+    flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 1px !important;
+  }
+  td{
+    padding: 0px;
+    margin: 0px;
+  }
+  thead{
+    display: none;
+  }
+
+  #payment{
+    gap: 3px;
+    justify-content: start !important;
+  }
+  
+  label{
+    font-size: 10px !important;
+  }
+
+  .last{
+    font-size: 15px;
+    justify-content: center;
+    align-items: center;
+  }
+
+  button{
+    font-size: 12px;
+    padding: 2px;
+  }
+  h3{
+    font-size: 14px;
+  }
+  
 }
 </style>

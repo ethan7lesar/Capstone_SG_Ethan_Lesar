@@ -1,7 +1,7 @@
 <template>
   <div class="main mb-28 mt-10 px-28">
-    <div v-if="product" class="flex h-[65vh]" >
-      <div class="ms-20 mt-20 relative w-[50%]">
+    <div v-if="product" class="flex h-[65vh] product" >
+      <div class="ms-20 mt-20 relative w-[50%] img">
         <img
           :src="product.prodUrl"
           :alt="product.prodName"
@@ -12,6 +12,7 @@
           src="https://i.postimg.cc/L5YzqcFv/Ellipse-6.png "
           alt="podium"
           class="absolute bottom-0"
+          id="podium"
         />
       </div>
       <div class="flex flex-col gap-1">
@@ -29,7 +30,7 @@
         </p>
         <h6 class="text-[22px] text-secondary">R{{ product.price }}</h6>
 
-        <div class="flex gap-20 mx-3 mt-5">
+        <div class="flex gap-20 mx-3 mt-5 buttons">
           <router-link
             to="/products"
             class="border-[1px] border-detail px-7 py-2 text-detail rounded-[20px]"
@@ -130,4 +131,56 @@ box-shadow: 0 0 30px 5px #f6ea00;
 -moz-transition: all 0.2s ease-out;
 transition: all 0.2s ease-out;
 }
+@media screen and (max-width:400px) {
+  #podium{
+    display: none;
+  }
+  .product{
+    flex-direction: column;
+    margin: 0px;
+  }
+  div{
+    margin: 0px;
+    padding: 0px;
+
+  }
+  #image{
+    position: static !important;
+    bottom: 0;
+    z-index: 0 !important;
+    margin-left: 65px !important;
+  margin: auto !important;
+  
+  }
+  h1{
+    font-size: 40px;
+    margin: auto;
+  }
+
+  h6{
+    font-size: 20px;
+    padding-left: 5px;
+  }
+  p{
+    font-size: 15px;
+    padding-left: 5px;
+  }
+  a, button{
+    padding: 3px;
+    margin: 0px;
+    font-size: 10px;
+    position: static;
+  }
+  .buttons{
+    margin-bottom: 300px !important;
+  }
+  .main{
+    margin-bottom: 100px !important;
+  }
+
+ .img{
+  margin: auto;
+ }
+}
+
 </style>

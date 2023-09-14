@@ -2,6 +2,7 @@
   <form
     @submit.prevent="userLogin"
     class="items-center justify-center text-center w-fit rounded-[30px] border-main border-[2px] p-10 bg-contrast my-6 mx-auto flex flex-col gap-5 mb-36"
+    id="form"
   >
     <div class="heading mx-auto">
       <svg
@@ -139,5 +140,31 @@ transition: all 0.2s ease-out;
 
 a:hover {
   border-bottom: 2px solid #f6ea00;
+}
+
+@media screen and (max-width:400px) {
+  input{
+    width: fit-content;
+    height: fit-content;
+    font-size: 12px;
+    padding-left: 2px;
+  }
+
+  label{
+    font-size: 12px;
+  }
+  h1{
+    font-size: 30px;
+  }
+  button{
+    font-size: 15px;
+    padding: 2px;
+  }
+  a{
+    font-size: 15px;
+  }
+  #form {
+    padding-inline: 15px !important;
+  }
 }
 </style>

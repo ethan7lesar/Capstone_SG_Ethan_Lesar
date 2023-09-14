@@ -7,11 +7,9 @@
         <div class="flex items-center gap-5 w-full border-detail border p-2 rounded-[20px] bg-main">
             <span class="text-5xl text-secondary">Q</span>
             <select name="faq" id="faq" class="text-xl flex-1 text-center bg-black text-detail rounded-[20px]" v-model="selected">
-                <option value="Ordering with Another Time is easy. Simply browse our collection, select the watch you desire, and click 'Add to Cart.'' Proceed to the checkout, where you can enter your shipping and payment details. Once your order is confirmed, you'll receive an email notification, and we'll take care of the rest.">How do I place an order with Another Time?</option>
-                <option value="We accept a variety of payment methods, including major credit cards (Visa, MasterCard, American Express), PayPal, and bank transfers. Rest assured that our payment process is secure to protect your sensitive information.">What payment methods do you accept?</option>
-                <option value="Absolutely! Once your order is shipped, you will receive a tracking number via email. You can use this number to monitor the progress of your package and estimate its delivery date.">Can I track my order?</option>
-                <option value="We want you to be completely satisfied with your purchase. If, for any reason, you're not happy with your order, you can return it within 30 days of receiving it for a full refund or exchange. Please refer to our Return Policy for detailed instructions and eligibility criteria.">What is your return policy?</option>
-                <option value="Yes, we offer a warranty on all our timepieces. The duration of the warranty may vary by product, but it typically covers manufacturing defects and issues that may arise under normal use. Please review the product's warranty information provided with your purchase for specific details or contact our customer support for assistance.">Are your watches covered by a warranty?</option>
+                <option value="NFTs, or Non-Fungible Tokens, are unique digital assets that represent ownership of a specific item or piece of content, often in the form of digital art, collectibles, music, or virtual real estate.">What are NFTs, and how do they work?</option>
+                <option value=" Purchasing NFTs from SG NFT Store is easy. First, you'll need a compatible cryptocurrency wallet that supports NFTs and a balance of the cryptocurrency used for the NFT purchase (usually Ethereum).">How can I purchase NFTs from SG NFT Store?</option>
+                <option value="Be the first to know about upcoming NFT drops, ensuring you don't miss out on limited-edition releases.Enjoy special discounts and promotions available only to our mailing list subscribers">What benefits do I get from subscribing to SG NFT Store's mailing list?</option>
             </select>
         </div>
 

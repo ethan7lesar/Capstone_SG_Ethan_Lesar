@@ -86,7 +86,7 @@
       </div>
     </div>
 
-    <div class="mt-auto ms-auto">
+    <div class="mt-auto ms-auto copyright">
       <h2 class="text-[25px] text-secondary">
         Copyright Ethan Lesar @{{ new Date().getFullYear() }}
       </h2>
@@ -98,4 +98,15 @@
 export default {};
 </script>
 
-<style scoped></style>
+<style scoped>
+@media screen and (max-width: 400px) {
+.copyright{
+  display: none;
+}
+p{
+  font-size: 10px;
+  width: fit-content;
+}
+}
+
+</style>

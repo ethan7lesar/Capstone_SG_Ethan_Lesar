@@ -2,6 +2,7 @@
   <h1 class="text-[50px] mx-auto text-secondary text-center">Cart:</h1>
   <div
     class="flex flex-col w-1/3 border-main rounded-[30px] border-[5px] p-10 mx-auto my-10 bg-detail mb-40"
+    id="cart"
   >
     <table class="flex flex-col gap-10 w-fit">
       <thead class="mx-auto">
@@ -40,7 +41,6 @@
     </table>
     <router-link
       to="/cart/checkout"
-      v-show="Cart"
       class="mt-5 border-[2px] border-main w-fit p-4 mx-auto text-[20px] rounded-[30px]"
       >Checkout</router-link
     >
@@ -94,5 +94,45 @@ button:hover {
   -webkit-transition: all 0.2s ease-out;
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
+}
+
+@media screen and (max-width: 400px) {
+
+  h1{
+    font-size: 30px;
+  }
+  #cart{
+    width: fit-content;
+  padding: 0px;
+  }
+
+  table{
+    font-size: 10px;
+    gap: 0;
+    padding: 10px;
+  }
+  tbody{
+    gap: 1;
+  }
+  a{
+    font-size: 12px;
+    padding: 2px;
+    margin-bottom: 10px;
+  }
+
+  tr{
+    flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   gap: 1px !important;
+  }
+  td{
+    padding: 0px;
+    margin: 0px;
+  }
+  thead{
+    display: none;
+  }
+  
 }
 </style>

@@ -8,7 +8,7 @@
     >
       <thead class="border-primary border-2 text-xl text-detail">
         <tr>
-          <th class="py-3">ID</th>
+          <th class="py-3" id="userID">ID</th>
           <th>First Name</th>
           <th class="model">Last Name</th>
           <th>Email</th>
@@ -21,7 +21,7 @@
         :key="user.userID"
         :user="user"
       >
-        <td>{{ user.userID }}</td>
+        <td id="userID">{{ user.userID }}</td>
         <td>{{ user.firstName }}</td>
         <td>{{ user.lastName }}</td>
         <td>{{ user.emailAdd }}</td>
@@ -44,9 +44,9 @@
       <thead class="border-primary border-2 text-xl text-detail">
         <tr>
           <th class="py-3">ID</th>
-          <th>Name</th>
-          <th class="model">Creator</th>
-          <th>Year</th>
+          <th >Name</th>
+          <th class="model" id="out">Creator</th>
+          <th id="out">Year</th>
           <th>Price</th>
           <th>Actions</th>
         </tr>
@@ -59,8 +59,8 @@
       >
         <td>{{ product.prodID }}</td>
         <td>{{ product.prodName }}</td>
-        <td>{{ product.creator }}</td>
-        <td>{{ product.prodYear }}</td>
+        <td id="out">{{ product.creator }}</td>
+        <td id="out">{{ product.prodYear }}</td>
         <td>{{ product.price }}</td>
         <td class="flex gap-2 justify-center">
           <router-link
@@ -145,6 +145,21 @@ box-shadow: 0 0 30px 5px #f6ea00;
 -webkit-transition: all 0.2s ease-out;
 -moz-transition: all 0.2s ease-out;
 transition: all 0.2s ease-out;
+}
+
+@media screen and (max-width:400px) {
+  #userID{
+    display: none;
+  }
+tbody{
+  font-size: 9px;
+}
+thead{
+font-size: 15px;
+}
+ #out{
+  display: none;
+ } 
 }
 
 </style>

@@ -1,6 +1,6 @@
 <template>
   <div
-    class="card bg-contrast rounded-[30px] border-[1px] border-main flex flex-col justify-center items-center p-5 gap-1 mx-10 mb-6 mt-2 w-96"
+    class="card bg-contrast rounded-[30px] border-[1px] border-main flex flex-col justify-center items-center p-5 gap-1 mx-10 mb-6 mt-2 w-10/12"
   >
     <img
       :src="product.prodUrl"
@@ -37,5 +37,14 @@ box-shadow: 0 0 30px 5px #f6ea00;
 -webkit-transition: all 0.2s ease-out;
 -moz-transition: all 0.2s ease-out;
 transition: all 0.2s ease-out;
+}
+
+@media screen and (max-width:400px) {
+  h2{
+    font-size: 30px;
+  }
+  h5{
+    font-size: 20px;
+  }
 }
 </style>

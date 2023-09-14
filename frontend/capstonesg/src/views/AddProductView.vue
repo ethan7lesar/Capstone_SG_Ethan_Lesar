@@ -132,4 +132,32 @@ box-shadow: 0 0 30px 5px #f6ea00;
 -moz-transition: all 0.2s ease-out;
 transition: all 0.2s ease-out;
 }
+
+@media screen and (max-width: 400px) {
+  input {
+    width: fit-content;
+    height: fit-content;
+    font-size: 12px;
+    padding-left: 2px;
+    padding: 0px;
+  }
+
+  label {
+    font-size: 12px;
+  }
+  h1 {
+    font-size: 30px;
+  }
+  button {
+    font-size: 15px;
+    padding: 2px;
+  }
+  a {
+    font-size: 15px;
+  }
+
+  main{
+    padding-inline: 8px !important;
+  }
+}
 </style>

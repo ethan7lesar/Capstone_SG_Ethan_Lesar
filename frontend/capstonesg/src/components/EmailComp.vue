@@ -60,4 +60,28 @@ button:hover {
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
+
+@media screen and (max-width: 400px) {
+h1{
+  font-size: 20px !important;
+}
+
+.emailconnect{
+  flex-direction: column;
+  padding-top: 15px;
+  padding-bottom: 15px;
+}
+
+p{
+  font-size: 6px;
+}
+button{
+  font-size: 6px;
+}
+input{
+  width: 150px;
+  font-size: 10px;
+}
+
+}
 </style>
