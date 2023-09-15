@@ -99,14 +99,22 @@ export default {};
 </script>
 
 <style scoped>
+
+@media screen and (max-width: 800px) {
+  h2 {
+
+    font-size: 16px !important;
+  }
+}
 @media screen and (max-width: 400px) {
-.copyright{
-  display: none;
+  .copyright {
+    display: none;
+  }
+  p {
+    font-size: 10px;
+    width: fit-content;
+  }
 }
-p{
-  font-size: 10px;
-  width: fit-content;
-}
-}
+
 
 </style>

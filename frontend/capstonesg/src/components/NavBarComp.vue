@@ -1,5 +1,5 @@
 <template>
-  <nav class="flex bg-background sticky top-0 p-[20px] bg-opacity-80">
+  <nav class="flex bg-background sticky top-0 p-[20px] bg-opacity-80 z-[99]">
     <div class="logo">
       <svg
         width="161"
@@ -100,8 +100,8 @@
     </button>
   </nav>
   <div
-    class="h-[100vh] fixed top-0 right-0 w-1/4 bg-contrast rounded-[30px] border-[2px] border-detail"
-    id="menu"
+    class="h-[100vh] fixed top-0 right-0 w-1/4 bg-contrast rounded-[30px] border-[2px] border-detail z-[99]"
+    id="menu" 
   >
     <button class="p-5" @click="menu">
       <svg
@@ -226,6 +226,21 @@ li > *:hover {
 .smMenu{
   display: none;
 }
+
+@media screen and (max-width:800px){
+  .lgMenu {
+    display: none;
+  }
+
+  .smMenu{
+    display: block;
+  }
+
+  #menu{
+    width: 100% !important
+  }
+  
+}
 @media screen and (max-width: 400px) {
   .lgMenu {
     display: none;
@@ -239,4 +254,6 @@ li > *:hover {
     width: 100% !important
   }
 }
+
+
 </style>

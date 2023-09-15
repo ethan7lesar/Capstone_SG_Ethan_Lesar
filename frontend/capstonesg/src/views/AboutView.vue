@@ -32,8 +32,8 @@
       </div>
     </div>
 
-    <div class="flex flex-row gap-10 mx-auto m-10 justify-center items-center" id="founder">
-      <div class="w-1/2 flex flex-col gap-5">
+    <div class="flex flex-row gap-10 mx-auto pb-10 justify-center items-center" id="founder">
+      <div class="w-1/2 flex flex-col gap-5" id="founderText">
         <h1 class="text-detail text-[60px]">Meet The Founder</h1>
         <h3 class="text-secondary text-[30px]">Ethan Lesar</h3>
         <p class="text-secondary text-[20px]">
@@ -75,7 +75,25 @@ main {
     #202020 109.22781229019165deg
   );
 }
+@media screen and (max-width:800px) {
+  #mainText{
+    gap: 10px;
+  } 
 
+  h1{
+    font-size: 40px;
+  }
+  p{
+    font-size: 12px;
+  }
+  #mission, #vission{
+    width: 100%;
+  }
+  #founderText{
+    margin-left: 35px !important;
+  }
+
+}
 @media screen and (max-width:400px) {
   h1{
     font-size: 30px;
@@ -96,4 +114,6 @@ main {
     flex-direction: column;
   }
 }
+
+
 </style>

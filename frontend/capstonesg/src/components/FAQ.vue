@@ -48,4 +48,16 @@
         background-color: #F6EA00;
     }
 
+    @media screen and (max-width:800px) {
+  option{
+    width: 600px !important;
+    font-size: 12px;
+
+  }
+  select{
+    width: 500px !important;
+  }
+  
+    }
+
 </style>

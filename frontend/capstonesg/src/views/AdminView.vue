@@ -4,7 +4,7 @@
     <h1 class="text-secondary text-[25px] ms-10">Users:</h1>
 
     <table
-      class="w-[95%] text-center border-main border-[2px] rounded-[20px]"
+      class="w-[95%] text-center border-main border-[2px] rounded-[20px] mx-auto"
     >
       <thead class="border-primary border-2 text-xl text-detail">
         <tr>
@@ -155,7 +155,7 @@ tbody{
   font-size: 9px;
 }
 thead{
-font-size: 15px;
+font-size: 12px;
 }
  #out{
   display: none;

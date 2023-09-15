@@ -1,6 +1,7 @@
 <template>
   <div class="flex mb-10" id="main">
     <div class="w-1/2 flex flex-col gap-4 items-center justify-center"
+    id="pay"
   >
       <h1 class="text-secondary mx-auto text-[30px]">CONFIRM YOUR PAYMENT</h1>
       <div class="flex justify-around w-2/3" id="payment">
@@ -12,8 +13,8 @@
         <input type="number" required ref="cardNumberInput" class="ms-auto" />
       </div>
       <div class="cvv flex justify-around w-2/3" id="payment">
-        <label class="me-auto">CVV:</label>
-        <input class="w-[80px]" type="password" required ref="cvvInput" />
+        <label id="labelCVV" class="me-auto">CVV:</label>
+        <input class="w-[80px]" type="password" required ref="cvvInput"  id="cvv"/>
       </div>
 
       <div class="last">
@@ -247,11 +248,47 @@ button:hover {
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
+@media screen  and (max-width:800px){
+  #main{
+    flex-direction: column;
+  }
 
-@media screen and (max-width: 400px) {
+  #cart{
+    width: 80%;
+    margin: auto;
+    margin-bottom: 200px;
+  }
+  #Image{
+    width: 20% !important;
+  }
 
   input{
     width: fit-content;
+    height: fit-content;
+    padding-left: 10px !important;
+    font-size: 20px
+  }
+  
+  h1{
+    font-size: 30px;
+  }
+
+  #pay{
+    width: 100%;
+  }
+  #cvv{
+    width: 100px;
+    margin-right: auto !important;
+  }
+  #labelCVV{
+    margin-right: 120px;
+  }
+  
+}
+@media screen and (max-width:400px) {
+
+  input{
+    width: 150px;
     height: fit-content;
     padding-left: 0px !important;
     font-size: 12px
@@ -321,4 +358,6 @@ button:hover {
   }
   
 }
+
+
 </style>

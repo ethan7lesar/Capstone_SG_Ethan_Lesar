@@ -1,7 +1,7 @@
 <template>
   <h1 class="text-[50px] mx-auto text-secondary text-center">Cart:</h1>
   <div
-    class="flex flex-col w-1/3 border-main rounded-[30px] border-[5px] p-10 mx-auto my-10 bg-detail mb-40"
+    class="flex flex-col mx-[500px] border-main rounded-[30px] border-[5px] p-10  my-10 bg-detail mb-40"
     id="cart"
   >
     <table class="flex flex-col gap-10 w-fit">
@@ -15,7 +15,7 @@
       </thead>
       <tbody v-for="product in Cart" :key="product.id" class="flex gap-3">
         <tr class="flex gap-10 justify-center">
-          <td class="w-4/12">
+          <td class="w-4/12" id="Image">
             <img
               :src="product.prodUrl"
               :alt="product.prodName"
@@ -95,7 +95,16 @@ button:hover {
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
-
+@media screen and (max-width:800px) {
+  #cart{
+    width: 80%;
+    margin: auto;
+    margin-bottom: 200px;
+  }
+  #Image{
+    width: 20% !important;
+  }
+}
 @media screen and (max-width: 400px) {
 
   h1{
@@ -135,4 +144,6 @@ button:hover {
   }
   
 }
+
+
 </style>

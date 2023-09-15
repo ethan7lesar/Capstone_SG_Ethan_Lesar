@@ -60,7 +60,26 @@ button:hover {
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
-
+@media screen and (max-width:800px) {
+  h1{
+    font-size: 30px;
+  }
+  p{
+    font-size: 12px;
+    width: 100%;
+  }
+  button{
+    padding: 4px;
+    font-size: 20px;
+    margin-bottom: 2px;
+    font-size: 10px;
+    }
+    input{
+      width: 250px;
+      font-size: 10px;
+    }
+  
+}
 @media screen and (max-width: 400px) {
 h1{
   font-size: 20px !important;
@@ -84,4 +103,6 @@ input{
 }
 
 }
+
+
 </style>

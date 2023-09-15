@@ -38,7 +38,18 @@ box-shadow: 0 0 30px 5px #f6ea00;
 -moz-transition: all 0.2s ease-out;
 transition: all 0.2s ease-out;
 }
-
+@media screen and (max-width:800px) {
+  h2{
+    font-size: 25px;
+  }
+  h5{
+    font-size: 20px;
+  }
+  a{
+    font-size: 15px;
+    padding: 4px;
+  }
+}
 @media screen and (max-width:400px) {
   h2{
     font-size: 30px;
@@ -47,4 +58,6 @@ transition: all 0.2s ease-out;
     font-size: 20px;
   }
 }
+
+
 </style>

@@ -35,7 +35,27 @@ box-shadow: 0 0 30px 5px #f6ea00;
 -moz-transition: all 0.2s ease-out;
 transition: all 0.2s ease-out;
 }
+@media screen and (max-width:800px) {
+  h1{
+    font-size: 40px;
+  }
+  a{
+    padding: 4px;
+    margin-bottom: 10px;
+    font-size: 16px;
+    }
 
+    header{
+      margin-top: 30px;
+      padding-bottom: 30px;
+    }
+    .hero{
+      margin: 0px;
+      margin-left: 30px !important;
+    }
+
+  
+}
 @media screen and (max-width: 400px) {
 .heroText{
 
@@ -64,4 +84,6 @@ img{
   margin-top: 10px;
 }
 }
+
+
 </style>

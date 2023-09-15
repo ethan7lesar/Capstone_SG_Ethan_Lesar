@@ -3,7 +3,7 @@
     <h1 class="text-center text-[50px] text-secondary">Collections</h1>
     <div class="flex gap-56 px-5 mt-3 sorts">
       <input
-      type="search"
+        type="search"
         v-model="searchTerm"
         placeholder="Search Collectables"
         class="rounded-[20px] w-[289px] h-[45px] flex-shrink-0 bg-contrast border-datail ps-3 border-detail text-detail border-[2px]"
@@ -54,24 +54,29 @@
           Cyber Punk
         </button>
         <button
-        type="button"
-        class="filter-btn rounded-[25px] border-[2px] p-2 border-detail"
-        :class="{ 'active-btn': selectedFilter === 'rockstar' }"
-        @click="selectFilter('rockstar')"
-      >
-        RockStar
-      </button>
+          type="button"
+          class="filter-btn rounded-[25px] border-[2px] p-2 border-detail"
+          :class="{ 'active-btn': selectedFilter === 'rockstar' }"
+          @click="selectFilter('rockstar')"
+        >
+          RockStar
+        </button>
       </div>
     </div>
-    <section v-if="filteredProducts.length > 0" class="grid grid-cols-3 mt-3 products">
+    <section
+      v-if="filteredProducts.length > 0"
+      class="grid grid-cols-3 mt-3 products"
+    >
       <ProductCardComp
         v-for="product of filteredProducts"
         :key="product.prodID"
         :product="product"
-        class=" mx-auto"
+        class="mx-auto"
       />
     </section>
-    <section v-else class=" flex justify-center items-center"><Loader/></section>
+    <section v-else class="flex justify-center items-center">
+      <Loader/>
+    </section>
   </main>
 </template>
 
@@ -124,10 +129,14 @@ export default {
       this.selectedFilter = filter;
     },
   },
-  mounted(){
-    if(this.$store.state.userRole === null || this.$store.state.userRole === '' || this.$store.state.userRole === undefined){
-      this.$router.push('/login')
-    } 
+  mounted() {
+    if (
+      this.$store.state.userRole === null ||
+      this.$store.state.userRole === "" ||
+      this.$store.state.userRole === undefined
+    ) {
+      this.$router.push("/login");
+    }
   },
 
   components: { ProductCardComp, Loader },
@@ -153,37 +162,43 @@ option:hover {
 button:hover {
   color: black;
   background: #f6ea00;
-box-shadow: 0 0 30px 5px #f6ea00;
--webkit-transition: all 0.2s ease-out;
--moz-transition: all 0.2s ease-out;
-transition: all 0.2s ease-out;
+  box-shadow: 0 0 30px 5px #f6ea00;
+  -webkit-transition: all 0.2s ease-out;
+  -moz-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
-
+@media screen and (max-width: 800px) {
+  .sorts {
+    flex-direction: column;
+    gap: 4px;
+    font-size: 15px;
+    width: fit-content;
+  }
+}
 @media screen and (max-width: 400px) {
-
-  h1{
+  h1 {
     font-size: 30px;
   }
-.sorts{
-  flex-direction: column;
-  gap: 4px;
-  font-size: 10px ;
-  width: fit-content;
-}  
-.products{
-  display: flex !important; 
-  flex-direction: column;
-}
+  .sorts {
+    flex-direction: column;
+    gap: 4px;
+    font-size: 10px;
+    width: fit-content;
+  }
+  .products {
+    display: flex !important;
+    flex-direction: column;
+  }
 
-.sort-select{
-  width: fit-content;
-}
-input{
-  width: fit-content !important;
-} 
-.buttons{
-  display: flex;
-  flex-wrap: wrap;
-}
+  .sort-select {
+    width: fit-content;
+  }
+  input {
+    width: fit-content !important;
+  }
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+  }
 }
 </style>

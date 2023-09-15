@@ -131,9 +131,68 @@ box-shadow: 0 0 30px 5px #f6ea00;
 -moz-transition: all 0.2s ease-out;
 transition: all 0.2s ease-out;
 }
+
+@media screen and (max-width:800px) {
+  #podium{
+    display: none;
+  }
+  .number{
+    font-size: 30px;
+  }
+  .product{
+    flex-direction: column;
+    margin: 0px;
+  }
+  div{
+    margin: 0px;
+
+  }
+  #image{
+    position: static !important;
+    bottom: 0;
+    top: 0;
+    z-index: 0 !important;
+    margin-left: 65px !important;
+  margin: auto !important;
+  
+  }
+  h1{
+    font-size: 40px;
+    margin: auto;
+  }
+
+  h6{
+    font-size: 30px;
+    padding-left: 5px;
+  }
+  p{
+    font-size: 15px;
+    padding-left: 5px;
+  }
+  a, button{
+    padding: 8px;
+    margin: 0px;
+    font-size: 20px;
+    position: static;
+  }
+  .buttons{
+    margin-bottom: 300px !important;
+  }
+  .main{
+    margin-bottom: 300px !important;
+  }
+
+ .img{
+  margin: auto;
+ }
+
+}
 @media screen and (max-width:400px) {
   #podium{
     display: none;
+  }
+  .number{
+    font-size: 30px;
   }
   .product{
     flex-direction: column;
@@ -182,5 +241,7 @@ transition: all 0.2s ease-out;
   margin: auto;
  }
 }
+
+
 
 </style>
