@@ -100,6 +100,10 @@ export default {
 </script>
 
 <style scoped>
+
+#image{
+  animation: hover 1.2s linear infinite ;
+}
 .prouct-name{
   text-transform: uppercase;
 }
@@ -130,6 +134,15 @@ box-shadow: 0 0 30px 5px #f6ea00;
 -webkit-transition: all 0.2s ease-out;
 -moz-transition: all 0.2s ease-out;
 transition: all 0.2s ease-out;
+}
+
+@keyframes hover {
+  0%, 100%{
+    transform: translateY(0px);
+  }
+  50%{
+    transform: translateY(8px);
+  }
 }
 
 @media screen and (max-width:800px) {

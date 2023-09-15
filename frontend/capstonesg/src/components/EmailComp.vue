@@ -44,6 +44,7 @@ export default {};
 </script>
 
 <style scoped>
+
 .emailconnect {
   background: linear-gradient(
     140deg,
@@ -60,9 +61,14 @@ button:hover {
   -moz-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
+
+
+
+
 @media screen and (max-width:800px) {
   h1{
     font-size: 30px;
+    
   }
   p{
     font-size: 12px;
