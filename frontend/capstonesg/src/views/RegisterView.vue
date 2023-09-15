@@ -109,6 +109,13 @@ export default {
         this.$router.push("/login");
       } catch (e) {
         console.error("Registration error: ", e);
+        await Swal.fire({
+          icon: "error",
+          title: "Already Registered",
+          text: e.response?.data?.error || "Unexpected error",
+          background: "#000000",
+          color: "#F6EA00",
+        });
       }
     },
   },
