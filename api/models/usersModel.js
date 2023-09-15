@@ -94,6 +94,20 @@ export const userLogin = (req, res) => {
   });
 };
 
+export const checkEmail = (email, result) => {
+db.query("SELECT * FROM Users WHERE emailAdd = ?", [email], (err, results) => {
+if(err) {
+  console.log(err);
+  result(err, null);
+}else{
+  result(null, results.length > 0);
+}
+
+});
+
+};
+
+
 // Update User to Database
 export const updateUserById = (data, id, result) => {
   db.query(

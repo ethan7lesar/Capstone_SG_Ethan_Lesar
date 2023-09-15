@@ -4,6 +4,7 @@ import {
   insertUser,
   updateUserById,
   deleteUserById,
+  checkEmail
 } from "../models/usersModel.js";
 import bcrypt from "bcrypt";
 import { createToken } from "../middleware/authenticateUser.js";
@@ -33,10 +34,22 @@ export const showUserById = (req, res) => {
 // Create New User
 export const createUser = (req, res) => {
   const data = req.body;
+checkEmail(data.emailAdd, (err, emailExists)=>{
+if (err){
+return res.status(500).json({error: "An Unexpected error occurred"})
+
+} if( emailExists){
+return res.status(409).json({error: "Email already exists"})
+}
+
+})
+
+
   data.userPass = bcrypt.hashSync(data.userPass, 10);
   const user = {
     emailAdd: data.emailAdd,
     userPass: data.userPass,
+    
   };
   let token = createToken(user);
   insertUser(data, (err, results) => {
